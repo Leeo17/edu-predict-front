@@ -1,0 +1,24 @@
+.container {
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  height: calc(100vh - 96px);
+  /* 96px is the height of the toolbar + the paddings from the card */
+}
+
+mat-card {
+  flex: 1;
+  margin: 1rem;
+  justify-content: center;
+  padding: 5rem;
+}
+
+mat-card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  margin: 5rem;
+}
