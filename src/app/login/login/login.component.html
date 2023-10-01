@@ -36,7 +36,9 @@
         <input matInput type="password" />
       </mat-form-field>
       <button mat-raised-button color="primary">Entrar</button>
-      <button mat-button color="primary">Esqueceu a senha?</button>
+      <button mat-button color="primary" (click)="goToRecoverPage()">
+        Esqueceu a senha?
+      </button>
     </mat-card-content>
   </mat-card>
 </div>

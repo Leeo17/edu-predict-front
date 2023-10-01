@@ -8,9 +8,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login/login.component';
+import { SendRecoverEmailComponent } from './send-recover-email/send-recover-email.component';
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, SendRecoverEmailComponent],
   imports: [
     CommonModule,
     LoginRoutingModule,
