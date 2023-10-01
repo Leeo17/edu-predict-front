@@ -1,0 +1,7 @@
+.c-container {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  height: calc(100vh - 64px);
+  /* 96px is the height of the toolbar + the paddings from the card */
+}

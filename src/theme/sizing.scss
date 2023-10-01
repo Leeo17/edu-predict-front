@@ -1,0 +1,40 @@
+:root {
+  // GENERAL
+  --space-unit: 1rem;
+  --space-xxs: calc(0.25 * var(--space-unit));
+  --space-xs: calc(0.5 * var(--space-unit));
+  --space-sm: calc(0.75 * var(--space-unit));
+  --space-regular: var(--space-unit);
+  --space-md: calc(1.5 * var(--space-unit));
+  --space-lg: calc(2 * var(--space-unit));
+  --space-xl: calc(3.5 * var(--space-unit));
+  --space-xxl: calc(5 * var(--space-unit));
+
+  --component-padding: var(--space-unit);
+  --border-radius: 8px;
+
+  // FONT
+  // Introduced on 2.0
+  // Based of https://medium.com/codyhouse/create-your-design-system-part-1-typography-7c630d9092bd
+  --text-base-size: 1rem;
+
+  --text-xxs: calc(var(--text-base-size) * 0.625);
+  --text-xs: calc(var(--text-base-size) * 0.75);
+  --text-sm: calc(var(--text-base-size) * 0.875);
+  --text-regular: calc(var(--text-base-size) * 0.9375);
+  --text-md: calc(var(--text-base-size) * 1);
+  --text-lg: calc(var(--text-base-size) * 1.15);
+  --text-xl: calc(var(--text-base-size) * 1.25);
+  --text-xxl: calc(var(--text-base-size) * 1.5);
+  --text-xxxl: calc(var(--text-base-size) * 1.875);
+
+  --heading-line-height: 1.31;
+  --body-line-height: 1.5;
+
+  --letter-spacing-xs: 0.09px;
+  --letter-spacing-sm: 0.23px;
+  --letter-spacing-md: 0.49px;
+  --letter-spacing-lg: 0.56px;
+  --letter-spacing-xl: 0.96px;
+  --letter-spacing-xxl: 1.56px;
+}
