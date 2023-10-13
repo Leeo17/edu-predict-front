@@ -9,9 +9,10 @@ import { MatInputModule } from '@angular/material/input';
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login/login.component';
 import { SendRecoverEmailComponent } from './send-recover-email/send-recover-email.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
-  declarations: [LoginComponent, SendRecoverEmailComponent],
+  declarations: [LoginComponent, SendRecoverEmailComponent, ResetPasswordComponent],
   imports: [
     CommonModule,
     LoginRoutingModule,

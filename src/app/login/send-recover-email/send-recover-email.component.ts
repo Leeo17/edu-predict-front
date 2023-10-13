@@ -9,6 +9,10 @@ import { Router } from '@angular/router';
 export class SendRecoverEmailComponent {
   constructor(private router: Router) {}
 
+  public goToResetPassword() {
+    this.router.navigate(['/login/reset-password']);
+  }
+
   public goToLoginPage() {
     this.router.navigate(['/login']);
   }

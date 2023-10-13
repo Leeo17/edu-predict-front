@@ -8,9 +8,11 @@
         <mat-label>Email</mat-label>
         <input matInput type="email" />
       </mat-form-field>
-      <button mat-raised-button color="primary">Enviar</button>
+      <button mat-raised-button color="primary" (click)="goToResetPassword()">
+        Enviar
+      </button>
       <button mat-button color="primary" (click)="goToLoginPage()">
-        Voltar
+        Voltar ao login
       </button>
     </mat-card-content>
   </mat-card>
