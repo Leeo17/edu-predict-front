@@ -1,10 +1,23 @@
 <mat-toolbar color="primary">
-  <mat-icon
-    aria-hidden="false"
-    aria-label="play"
-    fontIcon="menu_book"
-    style="margin-right: 8px"
-  ></mat-icon>
+  <mat-icon aria-hidden="false" aria-label="play" fontIcon="menu_book" class="u-margin-right--sm"></mat-icon>
   <span>Edu Predict</span>
+  <div class="u-display--flex u-flex-grow">
+    <a routerLink="/home/new-analysis" class="u-font-size--md u-margin-left--sm" routerLinkActive="is-active"
+      >Analisar</a
+    >
+    <a routerLink="/home/results" class="u-font-size--md u-margin-left--sm" routerLinkActive="is-active"
+      >Resultados</a
+    >
+    <a routerLink="/home/export" class="u-font-size--md u-margin-left--sm" routerLinkActive="is-active"
+      >Exportar</a
+    >
+    <a routerLink="/home/create-user" class="u-font-size--md u-margin-left--sm" routerLinkActive="is-active"
+      >Cadastrar</a
+    >
+  </div>
+  <a class="u-display--flex u-flex-align--center">
+    <mat-icon aria-hidden="false" aria-label="logout" fontIcon="logout" style="margin-right: 8px"></mat-icon>
+    <span class="u-font-size--md">Sair</span>
+  </a>
 </mat-toolbar>
 <router-outlet></router-outlet>
