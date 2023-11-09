@@ -6,7 +6,7 @@ export const authenticatedGuard: CanActivateFn = (route, state) => {
   const authService: AuthService = inject(AuthService);
   const router: Router = inject(Router);
 
-  return authService.isAuthenticated() ? true : router.parseUrl('/login');
+  return authService.isAuthenticated() ? true : router.parseUrl('/auth/login');
 };
 
 export const unauthenticatedGuard: CanActivateFn = (route, state) => {

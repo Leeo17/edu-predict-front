@@ -10,10 +10,10 @@ export class SendRecoverEmailComponent {
   constructor(private router: Router) {}
 
   public goToResetPassword() {
-    this.router.navigate(['/login/reset-password']);
+    this.router.navigate(['/auth/reset-password']);
   }
 
   public goToLoginPage() {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/auth/login']);
   }
 }

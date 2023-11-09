@@ -10,6 +10,6 @@ export class ResetPasswordComponent {
   constructor(private router: Router) {}
 
   public goToLoginPage() {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/auth/login']);
   }
 }

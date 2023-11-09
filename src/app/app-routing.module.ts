@@ -6,11 +6,11 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'prefix',
-    redirectTo: 'login',
+    redirectTo: 'auth',
   },
   {
-    path: 'login',
-    loadChildren: () => import('./login/login.module').then((m) => m.LoginModule),
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
     canActivate: [unauthenticatedGuard],
   },
   {

@@ -6,14 +6,16 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { CreateUserComponent } from './create-user/create-user.component';
+import { ExportComponent } from './export/export.component';
 import { HomeRoutingModule } from './home-routing.module';
+import { HomeComponent } from './home.component';
 import { NewAnalysisComponent } from './new-analysis/new-analysis.component';
 import { ResultsComponent } from './results/results.component';
-import { ExportComponent } from './export/export.component';
 
 @NgModule({
-  declarations: [CreateUserComponent, NewAnalysisComponent, ResultsComponent, ExportComponent],
+  declarations: [HomeComponent, CreateUserComponent, NewAnalysisComponent, ResultsComponent, ExportComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
@@ -22,6 +24,7 @@ import { ExportComponent } from './export/export.component';
     MatButtonModule,
     MatIconModule,
     MatInputModule,
+    MatToolbarModule,
   ],
   providers: [],
 })

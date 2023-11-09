@@ -10,6 +10,6 @@ export class LoginComponent {
   constructor(private router: Router) {}
 
   public goToRecoverPage() {
-    this.router.navigate(['/login/send-recover-email']);
+    this.router.navigate(['/auth/send-recover-email']);
   }
 }
