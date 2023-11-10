@@ -1,44 +1,37 @@
 <div class="c-container">
   <mat-card class="c-card">
-    <mat-card-title>
-      Uma forma favorável de evitar a desistência e mostrar a nossa presença!
-    </mat-card-title>
-    <mat-card-subtitle align="justify">
-      Em média, 17% dos estudantes desistem de seus cursos de graduação. Alguns
-      o fazem por vontade própria, mas a grande maioria enfrenta dificuldades de
-      ordem econômica, social, física ou psicológica. E você? Já refletiu sobre
-      como poderia contribuir para reduzir essa porcentagem?
+    <mat-card-title> Uma forma favorável de evitar a desistência e mostrar a nossa presença! </mat-card-title>
+    <mat-card-subtitle>
+      Em média, 17% dos estudantes desistem de seus cursos de graduação. Alguns o fazem por vontade própria, mas a
+      grande maioria enfrenta dificuldades de ordem econômica, social, física ou psicológica. E você? Já refletiu
+      sobre como poderia contribuir para reduzir essa porcentagem?
     </mat-card-subtitle>
     <mat-card-content>
       <img src="assets/education.svg" alt="Login" />
       <button mat-button color="primary">
-        <mat-icon
-          aria-hidden="false"
-          aria-label="play"
-          fontIcon="play_circle_filled"
-        ></mat-icon>
+        <mat-icon aria-hidden="false" aria-label="play" fontIcon="play_circle_filled"></mat-icon>
         Como usar esta ferramenta?
       </button>
     </mat-card-content>
   </mat-card>
   <mat-card class="c-card">
-    <mat-card-title align="center">Login</mat-card-title>
-    <mat-card-subtitle align="center"
-      >Utilize seu email institucional</mat-card-subtitle
-    >
+    <mat-card-title>Login</mat-card-title>
+    <mat-card-subtitle>Utilize seu email institucional</mat-card-subtitle>
     <mat-card-content>
-      <mat-form-field appearance="fill">
-        <mat-label>Email</mat-label>
-        <input matInput />
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Senha</mat-label>
-        <input matInput type="password" />
-      </mat-form-field>
-      <button mat-raised-button color="primary">Entrar</button>
-      <button mat-button color="primary" (click)="goToRecoverPage()">
-        Esqueceu a senha?
-      </button>
+      <form class="u-display--flex u-flex-direction--column" [formGroup]="form">
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" id="email" formControlName="email" required />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Senha</mat-label>
+          <input matInput type="password" id="password" formControlName="password" required />
+        </mat-form-field>
+        <button mat-flat-button type="submit" color="primary" [disabled]="!form.valid" (click)="submitLogin()">
+          Entrar
+        </button>
+        <button mat-button type="button" color="primary" (click)="goToRecoverPage()">Esqueceu a senha?</button>
+      </form>
     </mat-card-content>
   </mat-card>
 </div>
