@@ -5,30 +5,46 @@
         <mat-form-field appearance="fill">
           <mat-label>Nome</mat-label>
           <input matInput type="text" id="firstName" formControlName="firstName" required />
+          <mat-error *ngIf="form.hasError('required', 'firstName')"> O campo nome é obrigatório </mat-error>
+          <mat-error *ngIf="form.hasError('minlength', 'firstName')">
+            O campo nome deve conter no mínimo dois caracteres
+          </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Sobrenome</mat-label>
           <input matInput type="text" id="lastName" formControlName="lastName" required />
+          <mat-error *ngIf="form.hasError('required', 'lastName')"> O campo sobrenome é obrigatório </mat-error>
+          <mat-error *ngIf="form.hasError('minlength', 'lastName')">
+            O campo sobrenome deve conter no mínimo dois caracteres
+          </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Email instituicional</mat-label>
           <input matInput type="email" id="email" formControlName="email" required />
+          <mat-error *ngIf="form.hasError('required', 'email')"> O campo email é obrigatório </mat-error>
+          <mat-error *ngIf="form.hasError('email', 'email')"> O email digitado é inválido </mat-error>
         </mat-form-field>
       </form>
       <form class="u-display--flex u-flex-direction--column" [formGroup]="passwordForm">
         <mat-form-field appearance="fill">
           <mat-label>Senha</mat-label>
           <input matInput type="password" id="password" formControlName="password" required />
+          <mat-error *ngIf="passwordForm.hasError('required', 'password')">
+            O campo senha é obrigatório
+          </mat-error>
+          <mat-error *ngIf="passwordForm.hasError('minlength', 'password')">
+            O campo senha deve conter no mínimo seis caracteres
+          </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Confirmar senha</mat-label>
           <input
             matInput
             type="password"
-            id="password"
+            id="confirmPassword"
             formControlName="confirmPassword"
-            required
             [errorStateMatcher]="matcher" />
+          <mat-error *ngIf="passwordForm.hasError('notSame')">As senhas não correspondem</mat-error>
         </mat-form-field>
         <button
           mat-flat-button
