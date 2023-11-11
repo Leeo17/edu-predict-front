@@ -15,9 +15,19 @@
       >Cadastrar</a
     >
   </div>
-  <a routerLink="#" class="u-display--flex u-flex-align--center" (click)="logout()">
-    <mat-icon aria-hidden="false" aria-label="logout" fontIcon="logout" style="margin-right: 8px"></mat-icon>
-    <span class="u-font-size--md">Sair</span>
-  </a>
+  <button mat-button [matMenuTriggerFor]="menu" class="u-display--flex u-flex-align--center">
+    <mat-icon
+      aria-hidden="false"
+      aria-label="account_menu"
+      fontIcon="account_circle"
+      style="margin-right: 8px"></mat-icon>
+    <span class="u-font-size--md">{{ userFirstName }}</span>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="logout()">
+      <mat-icon aria-hidden="false" aria-label="logout" fontIcon="logout" style="margin-right: 8px"></mat-icon>
+      <span class="u-font-size--md">Sair</span>
+    </button>
+  </mat-menu>
 </mat-toolbar>
 <router-outlet></router-outlet>

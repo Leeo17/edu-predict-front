@@ -6,6 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { ExportComponent } from './export/export.component';
@@ -25,6 +26,7 @@ import { ResultsComponent } from './results/results.component';
     MatIconModule,
     MatInputModule,
     MatToolbarModule,
+    MatMenuModule,
   ],
   providers: [],
 })

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
+import { LoginResponse } from '../shared/interfaces';
 import { ApiService } from '../shared/services/api.service';
 import { MessageService } from '../shared/services/message.service';
 
@@ -45,9 +46,11 @@ export class AuthService {
 
   login(input: { email: string; password: string }) {
     this.apiService.login(input).subscribe({
-      next: (res) => {
+      next: (res: LoginResponse) => {
         if (res && res.access_token) {
           window.localStorage.setItem('token', res.access_token);
+          window.localStorage.setItem('user', JSON.stringify(res.user));
+
           this.router.navigate(['/home']);
         }
         return false;
@@ -61,6 +64,7 @@ export class AuthService {
 
   logout() {
     window.localStorage.removeItem('token');
+    window.localStorage.removeItem('user');
     this.router.navigate(['/auth/login']);
   }
 }
