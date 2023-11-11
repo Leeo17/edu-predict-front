@@ -6,10 +6,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { httpInterceptorProviders } from './shared/http-interceptors';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, HttpClientModule, MatSnackBarModule],
   bootstrap: [AppComponent],
+  providers: [httpInterceptorProviders],
 })
 export class AppModule {}
