@@ -9,14 +9,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CreateUserComponent } from './create-user/create-user.component';
-import { ExportComponent } from './export/export.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { NewAnalysisComponent } from './new-analysis/new-analysis.component';
 import { ResultsComponent } from './results/results.component';
 
 @NgModule({
-  declarations: [HomeComponent, CreateUserComponent, NewAnalysisComponent, ResultsComponent, ExportComponent],
+  declarations: [HomeComponent, CreateUserComponent, NewAnalysisComponent, ResultsComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
