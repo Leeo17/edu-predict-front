@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
     const rawUser = window.localStorage.getItem('user');
     if (rawUser) {
       this.user = JSON.parse(rawUser);
-      this.userFirstName = this.user?.nome_completo.split(' ')[0];
+      this.userFirstName = this.user?.nome;
     }
   }
 

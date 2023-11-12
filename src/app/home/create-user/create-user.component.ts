@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { UserInput } from '../../shared/interfaces';
+import { HomeService } from '../home.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -20,7 +22,7 @@ export class CreateUserComponent {
   form!: FormGroup;
   passwordForm!: FormGroup;
   matcher = new MyErrorStateMatcher();
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private homeService: HomeService) {}
 
   checkPasswords(group: FormGroup) {
     let pass = group.get('password')?.value;
@@ -49,5 +51,19 @@ export class CreateUserComponent {
     if (!this.form.valid || !this.passwordForm.valid) {
       return;
     }
+
+    const userInput: UserInput = {
+      email: this.form.value.email,
+      nome: this.form.value.firstName,
+      sobrenome: this.form.value.lastName,
+      senha: this.passwordForm.value.password,
+    };
+
+    this.homeService.createUser(userInput).subscribe((res) => {
+      if (res) {
+        this.form.reset();
+        this.passwordForm.reset();
+      }
+    });
   }
 }

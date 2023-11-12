@@ -2,8 +2,16 @@ export interface User {
   data_cadastro: Date;
   email: string;
   email_verificado: boolean;
-  nome_completo: string;
+  nome: string;
+  sobrenome: string;
   usuario_ativo: boolean;
+}
+
+export interface UserInput {
+  email: string;
+  nome: string;
+  sobrenome: string;
+  senha: string;
 }
 
 export interface LoginResponse {
