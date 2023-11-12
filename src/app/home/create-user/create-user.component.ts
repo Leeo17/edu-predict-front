@@ -34,8 +34,6 @@ export class CreateUserComponent {
       firstName: ['', [Validators.required, Validators.minLength(2)]],
       lastName: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: [''],
     });
 
     this.passwordForm = this.formBuilder.group(
