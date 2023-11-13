@@ -62,7 +62,18 @@ export class CreateUserComponent {
     this.homeService.createUser(userInput).subscribe((res) => {
       if (res) {
         this.form.reset();
+        Object.keys(this.form.controls).forEach((key) => {
+          this.form.get(key)?.setErrors(null);
+          this.form.get(key)?.markAsPristine();
+          this.form.get(key)?.markAsUntouched();
+        });
+
         this.passwordForm.reset();
+        Object.keys(this.passwordForm.controls).forEach((key) => {
+          this.passwordForm.get(key)?.setErrors(null);
+          this.passwordForm.get(key)?.markAsPristine();
+          this.passwordForm.get(key)?.markAsUntouched();
+        });
       }
     });
   }
