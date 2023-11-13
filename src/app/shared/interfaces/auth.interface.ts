@@ -12,6 +12,7 @@ export interface UserInput {
   nome: string;
   sobrenome: string;
   senha: string;
+  confirmar_senha: string;
 }
 
 export interface LoginResponse {

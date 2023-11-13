@@ -57,6 +57,7 @@ export class CreateUserComponent {
       nome: this.form.value.firstName,
       sobrenome: this.form.value.lastName,
       senha: this.passwordForm.value.password,
+      confirmar_senha: this.passwordForm.value.confirmPassword,
     };
 
     this.homeService.createUser(userInput).subscribe((res) => {
