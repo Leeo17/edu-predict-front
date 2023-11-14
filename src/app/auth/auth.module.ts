@@ -12,11 +12,11 @@ import { ApiService } from '../shared/services/api.service';
 import { AuthRoutingModule } from './auth-routing.module';
 import { AuthComponent } from './auth.component';
 import { LoginComponent } from './login/login.component';
-import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { SendRecoverEmailComponent } from './send-recover-email/send-recover-email.component';
+import { SetPasswordComponent } from './set-password/set-password.component';
 
 @NgModule({
-  declarations: [AuthComponent, LoginComponent, SendRecoverEmailComponent, ResetPasswordComponent],
+  declarations: [AuthComponent, LoginComponent, SendRecoverEmailComponent, SetPasswordComponent],
   imports: [
     CommonModule,
     AuthRoutingModule,
