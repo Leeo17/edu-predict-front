@@ -1,17 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserInput } from '../../shared/interfaces';
 import { HomeService } from '../home.service';
-
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const invalidCtrl = !!(control?.invalid && control?.parent?.dirty);
-    const invalidParent = !!(control?.parent?.invalid && control?.parent?.dirty);
-
-    return invalidCtrl || invalidParent;
-  }
-}
 
 @Component({
   selector: 'app-create-user',
@@ -20,16 +10,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class CreateUserComponent {
   form!: FormGroup;
-  passwordForm!: FormGroup;
-  matcher = new MyErrorStateMatcher();
   constructor(private formBuilder: FormBuilder, private homeService: HomeService) {}
-
-  checkPasswords(group: FormGroup) {
-    let pass = group.get('password')?.value;
-    let confirmPass = group.get('confirmPassword')?.value;
-
-    return pass === confirmPass ? null : { notSame: true };
-  }
 
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -37,18 +18,10 @@ export class CreateUserComponent {
       lastName: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
     });
-
-    this.passwordForm = this.formBuilder.group(
-      {
-        password: ['', [Validators.required, Validators.minLength(6)]],
-        confirmPassword: [''],
-      },
-      { validator: this.checkPasswords }
-    );
   }
 
   public submitUser() {
-    if (!this.form.valid || !this.passwordForm.valid) {
+    if (!this.form.valid) {
       return;
     }
 
@@ -56,8 +29,6 @@ export class CreateUserComponent {
       email: this.form.value.email,
       nome: this.form.value.firstName,
       sobrenome: this.form.value.lastName,
-      senha: this.passwordForm.value.password,
-      confirmar_senha: this.passwordForm.value.confirmPassword,
     };
 
     this.homeService.createUser(userInput).subscribe((res) => {
@@ -67,13 +38,6 @@ export class CreateUserComponent {
           this.form.get(key)?.setErrors(null);
           this.form.get(key)?.markAsPristine();
           this.form.get(key)?.markAsUntouched();
-        });
-
-        this.passwordForm.reset();
-        Object.keys(this.passwordForm.controls).forEach((key) => {
-          this.passwordForm.get(key)?.setErrors(null);
-          this.passwordForm.get(key)?.markAsPristine();
-          this.passwordForm.get(key)?.markAsUntouched();
         });
       }
     });

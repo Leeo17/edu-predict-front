@@ -11,8 +11,12 @@ export interface UserInput {
   email: string;
   nome: string;
   sobrenome: string;
+}
+
+export interface UserPassInput {
   senha: string;
   confirmar_senha: string;
+  codigo_verificacao: string;
 }
 
 export interface LoginResponse {

@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { LoginResponse, User, UserInput } from '../interfaces';
+import { LoginResponse, User, UserInput, UserPassInput } from '../interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -16,5 +16,9 @@ export class ApiService {
 
   createUser(input: UserInput) {
     return this.http.post<User>(`${environment.api}/user`, input);
+  }
+
+  createUserPassword(input: UserPassInput) {
+    return this.http.post<any>(`${environment.api}/user/password`, input);
   }
 }

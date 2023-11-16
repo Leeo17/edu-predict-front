@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
-import { LoginResponse } from '../shared/interfaces';
+import { catchError, tap } from 'rxjs';
+import { LoginResponse, UserPassInput } from '../shared/interfaces';
 import { ApiService } from '../shared/services/api.service';
 import { MessageService } from '../shared/services/message.service';
 
@@ -60,6 +61,22 @@ export class AuthService {
         this.messageService.showNotification(err.error.detail);
       },
     });
+  }
+
+  createUserPassword(input: UserPassInput) {
+    return this.apiService.createUserPassword(input).pipe(
+      tap((res) => {
+        if (res) {
+          this.messageService.showNotification(
+            'Senha atualizada com sucesso. Você já pode usar a nova senha e seu email instituicional para entrar.'
+          );
+        }
+      }),
+      catchError((err) => {
+        this.messageService.showNotification(err.error.detail);
+        throw err;
+      })
+    );
   }
 
   logout() {

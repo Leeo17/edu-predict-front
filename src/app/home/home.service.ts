@@ -15,7 +15,7 @@ export class HomeService {
       tap((res) => {
         if (res) {
           this.messageService.showNotification(
-            'Usuário criado com sucesso. É necessário verificar o e-mail para ativar a conta.'
+            'Usuário criado com sucesso. É necessário verificar o e-mail para ativar a conta e definir a senha.'
           );
         }
       }),
