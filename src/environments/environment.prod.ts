@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api: 'http://my-prod-url',
+  api: 'https://edu-predict-api-a5d21e2f0917.herokuapp.com',
 };
