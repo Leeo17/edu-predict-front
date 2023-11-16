@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { UserPassInput } from '../../shared/interfaces';
 import { AuthService } from '../auth.service';
 
@@ -22,25 +23,33 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class SetPasswordComponent implements OnInit {
   form!: FormGroup;
   matcher = new MyErrorStateMatcher();
+  paramSub!: Subscription;
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private authService: AuthService) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder,
+    private authService: AuthService
+  ) {}
+
+  ngOnInit() {
+    this.paramSub = this.route.queryParams.subscribe((params) => {
+      this.form = this.formBuilder.group(
+        {
+          password: ['', [Validators.required, Validators.minLength(6)]],
+          confirmPassword: [''],
+          verificationCode: [params['code'], [Validators.required]],
+        },
+        { validator: this.checkPasswords }
+      );
+    });
+  }
 
   checkPasswords(group: FormGroup) {
     let pass = group.get('password')?.value;
     let confirmPass = group.get('confirmPassword')?.value;
 
     return pass === confirmPass ? null : { notSame: true };
-  }
-
-  ngOnInit() {
-    this.form = this.formBuilder.group(
-      {
-        password: ['', [Validators.required, Validators.minLength(6)]],
-        confirmPassword: [''],
-        verificationCode: ['', [Validators.required]],
-      },
-      { validator: this.checkPasswords }
-    );
   }
 
   public submitPassword() {
