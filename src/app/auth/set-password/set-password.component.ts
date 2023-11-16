@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -20,7 +20,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   templateUrl: './set-password.component.html',
   styleUrls: ['./set-password.component.scss'],
 })
-export class SetPasswordComponent implements OnInit {
+export class SetPasswordComponent implements OnInit, OnDestroy {
   form!: FormGroup;
   matcher = new MyErrorStateMatcher();
   paramSub!: Subscription;
@@ -43,6 +43,10 @@ export class SetPasswordComponent implements OnInit {
         { validator: this.checkPasswords }
       );
     });
+  }
+
+  ngOnDestroy() {
+    this.paramSub.unsubscribe();
   }
 
   checkPasswords(group: FormGroup) {
