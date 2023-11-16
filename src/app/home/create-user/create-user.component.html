@@ -25,6 +25,9 @@
           <mat-error *ngIf="form.hasError('required', 'email')"> O campo email é obrigatório </mat-error>
           <mat-error *ngIf="form.hasError('email', 'email')"> O email digitado é inválido </mat-error>
         </mat-form-field>
+        <button mat-flat-button type="submit" color="primary" [disabled]="!form.valid" (click)="submitUser()">
+          Cadastrar
+        </button>
       </form>
     </mat-card-content>
   </mat-card>
