@@ -85,7 +85,7 @@ export class AuthService {
     return this.apiService.sendResetPasswordEmail(email).pipe(
       tap((res) => {
         if (res) {
-          this.messageService.showNotification('Email para recuperação de senha enviado.');
+          this.messageService.showNotification('Email de recuperação de senha enviado.');
         }
       }),
       catchError((err) => {

@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { SharedModule } from '../shared/shared.module';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
@@ -28,6 +29,7 @@ import { ResultsComponent } from './results/results.component';
     MatToolbarModule,
     MatMenuModule,
     ReactiveFormsModule,
+    SharedModule,
   ],
   providers: [],
 })

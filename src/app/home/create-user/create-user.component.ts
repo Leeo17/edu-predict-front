@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { finalize } from 'rxjs';
 import { UserInput } from '../../shared/interfaces';
 import { HomeService } from '../home.service';
 
@@ -10,6 +11,7 @@ import { HomeService } from '../home.service';
 })
 export class CreateUserComponent {
   form!: FormGroup;
+  isLoading = false;
   constructor(private formBuilder: FormBuilder, private homeService: HomeService) {}
 
   ngOnInit() {
@@ -25,21 +27,26 @@ export class CreateUserComponent {
       return;
     }
 
+    this.isLoading = true;
+
     const userInput: UserInput = {
       email: this.form.value.email,
       nome: this.form.value.firstName,
       sobrenome: this.form.value.lastName,
     };
 
-    this.homeService.createUser(userInput).subscribe((res) => {
-      if (res) {
-        this.form.reset();
-        Object.keys(this.form.controls).forEach((key) => {
-          this.form.get(key)?.setErrors(null);
-          this.form.get(key)?.markAsPristine();
-          this.form.get(key)?.markAsUntouched();
-        });
-      }
-    });
+    this.homeService
+      .createUser(userInput)
+      .pipe(finalize(() => (this.isLoading = false)))
+      .subscribe((res) => {
+        if (res) {
+          this.form.reset();
+          Object.keys(this.form.controls).forEach((key) => {
+            this.form.get(key)?.setErrors(null);
+            this.form.get(key)?.markAsPristine();
+            this.form.get(key)?.markAsUntouched();
+          });
+        }
+      });
   }
 }
