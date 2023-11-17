@@ -1,27 +1,37 @@
-# EduPredictFront
+# Edu Predict Front
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
+Este é o front-end do Edu Predict, um projeto que usa Machine Learning para determinar um índice de potencial evasão de estudantes da UFPR. Para usar o Edu Predict, você pode seguir os passos abaixo para rodar o projeto localmente ou acessar o seguinte site em que ele está hospedado: [https://edu-predict-front-f0c6146f4281.herokuapp.com/](https://edu-predict-front-f0c6146f4281.herokuapp.com/).
 
-## Local server
+## 1. Instalar o Node.js e o npm
 
-Run `ng serve` for a local server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Este projeto foi desenvolvido usando o framework Angular e, portanto, é necessário ter o Node.js e o npm instalados em seu sistema. É recomendado instalar a versão LTS do Node.js em [https://nodejs.org/](https://nodejs.org/). O instalador do Node.js também incluí o npm.
 
-## Code scaffolding
+## 2. Instalar o Angular CLI
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+O Angular CLI é uma ferramenta de linha de comando que simplifica o desenvolvimento Angular. Abra o terminal ou prompt de comando e execute o seguinte comando para instalar o Angular CLI globalmente:
 
-## Build
+`npm install -g @angular/cli`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 3. Clonar o repositório do projeto
 
-## Running unit tests
+Clone o repositório do projeto usando o Git através do seguinte comando:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+`git clone https://github.com/Leeo17/edu-predict-front.git`
 
-## Running end-to-end tests
+## 4. Navegue até o diretório do projeto
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Abra o terminal ou prompt de comando no diretório clonado anteriormente.
 
-## Further help
+## 5. Instale as dependências do projeto
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Execute o seguinte comando para instalar as dependências do projeto usando o npm:
+
+`npm install`
+
+## 6. Rode o projeto
+
+Após a conclusão da instalação das dependências, você pode iniciar o servidor de desenvolvimento do Angular usando o seguinte comando:
+
+`ng serve`
+
+Este comando compilará o código e iniciará um servidor de desenvolvimento. Por padrão, o aplicativo estará disponível em `http://localhost:4200/`. Abra um navegador e acesse esse URL para visualizar o projeto em execução.
