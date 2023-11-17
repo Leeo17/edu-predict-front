@@ -46,8 +46,8 @@ export class AuthService {
   }
 
   login(input: { email: string; password: string }) {
-    this.apiService.login(input).subscribe({
-      next: (res: LoginResponse) => {
+    return this.apiService.login(input).pipe(
+      tap((res: LoginResponse) => {
         if (res && res.access_token) {
           window.localStorage.setItem('token', res.access_token);
           window.localStorage.setItem('user', JSON.stringify(res.user));
@@ -55,12 +55,13 @@ export class AuthService {
           this.router.navigate(['/home']);
         }
         return false;
-      },
-      error: (err) => {
+      }),
+      catchError((err) => {
         console.log(err);
         this.messageService.showNotification(err.error.detail);
-      },
-    });
+        throw err;
+      })
+    );
   }
 
   createUserPassword(input: UserPassInput) {
@@ -73,6 +74,7 @@ export class AuthService {
         }
       }),
       catchError((err) => {
+        console.log(err);
         this.messageService.showNotification(err.error.detail);
         throw err;
       })
@@ -87,6 +89,7 @@ export class AuthService {
         }
       }),
       catchError((err) => {
+        console.log(err);
         this.messageService.showNotification(err.error.detail);
         throw err;
       })

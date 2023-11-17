@@ -1,0 +1,12 @@
+<button
+  mat-flat-button
+  type="submit"
+  color="primary"
+  [disabled]="disabled"
+  [style.pointer-events]="loading ? 'none' : ''"
+  id="submitBtn">
+  &nbsp; {{ label }} &nbsp;
+  <mat-icon iconPositionEnd *ngIf="loading">
+    <mat-spinner color="accent" diameter="18"></mat-spinner>
+  </mat-icon>
+</button>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { finalize } from 'rxjs';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
   form!: FormGroup;
+  isLoading = false;
 
   constructor(private router: Router, private authService: AuthService, private formBuilder: FormBuilder) {}
 
@@ -28,6 +30,12 @@ export class LoginComponent implements OnInit {
     if (!this.form.valid) {
       return;
     }
-    this.authService.login(this.form.getRawValue());
+
+    this.isLoading = true;
+
+    this.authService
+      .login(this.form.getRawValue())
+      .pipe(finalize(() => (this.isLoading = false)))
+      .subscribe();
   }
 }

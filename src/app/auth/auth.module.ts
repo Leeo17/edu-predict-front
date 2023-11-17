@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ApiService } from '../shared/services/api.service';
+import { SharedModule } from '../shared/shared.module';
 import { AuthRoutingModule } from './auth-routing.module';
 import { AuthComponent } from './auth.component';
 import { LoginComponent } from './login/login.component';
@@ -27,6 +28,7 @@ import { SetPasswordComponent } from './set-password/set-password.component';
     MatInputModule,
     MatToolbarModule,
     ReactiveFormsModule,
+    SharedModule,
   ],
   providers: [ApiService],
 })
