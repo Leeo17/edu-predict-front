@@ -5,12 +5,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ApiService } from '../shared/services/api.service';
-import { ButtonComponent } from './components/button/button.component';
+import { SubmitButtonComponent } from './components/submit-button/submit-button.component';
 
 @NgModule({
-  declarations: [ButtonComponent],
+  declarations: [SubmitButtonComponent],
   imports: [CommonModule, MatIconModule, MatProgressSpinnerModule, MatButtonModule],
-  exports: [ButtonComponent],
+  exports: [SubmitButtonComponent],
   providers: [ApiService],
 })
 export class SharedModule {}

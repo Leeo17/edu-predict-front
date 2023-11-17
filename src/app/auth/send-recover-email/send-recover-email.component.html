@@ -9,12 +9,12 @@
           <mat-error *ngIf="form.hasError('required', 'email')"> O campo email é obrigatório </mat-error>
           <mat-error *ngIf="form.hasError('email', 'email')"> O email digitado é inválido </mat-error>
         </mat-form-field>
-        <app-button
+        <app-submit-button
           class="u-display--flex"
           label="Enviar"
           [disabled]="!form.valid"
           (click)="sendEmail()"
-          [loading]="isLoading"></app-button>
+          [loading]="isLoading"></app-submit-button>
         <button mat-button color="primary" (click)="goToLoginPage()">Voltar ao login</button>
       </form>
     </mat-card-content>

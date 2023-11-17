@@ -29,12 +29,12 @@
           <mat-label>Senha</mat-label>
           <input matInput type="password" id="password" formControlName="password" required />
         </mat-form-field>
-        <app-button
+        <app-submit-button
           class="u-display--flex"
           label="Entrar"
           [disabled]="!form.valid"
           (click)="submitLogin()"
-          [loading]="isLoading"></app-button>
+          [loading]="isLoading"></app-submit-button>
         <button mat-button type="button" color="primary" (click)="goToRecoverPage()">Esqueceu a senha?</button>
       </form>
     </mat-card-content>
