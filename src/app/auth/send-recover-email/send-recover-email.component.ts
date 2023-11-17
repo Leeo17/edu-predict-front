@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { finalize } from 'rxjs';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { AuthService } from '../auth.service';
 })
 export class SendRecoverEmailComponent {
   form!: FormGroup;
+  isLoading = false;
   constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService) {}
 
   ngOnInit() {
@@ -27,9 +29,14 @@ export class SendRecoverEmailComponent {
       return;
     }
 
-    this.authService.sendResetPasswordEmail(this.form.value.email).subscribe({
-      next: () => this.router.navigate(['/auth/login']),
-      error: () => this.form.reset(),
-    });
+    this.isLoading = true;
+
+    this.authService
+      .sendResetPasswordEmail(this.form.value.email)
+      .pipe(finalize(() => (this.isLoading = false)))
+      .subscribe({
+        next: () => this.router.navigate(['/auth/login']),
+        error: () => this.form.reset(),
+      });
   }
 }

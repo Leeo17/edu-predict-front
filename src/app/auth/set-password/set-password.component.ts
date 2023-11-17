@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, finalize } from 'rxjs';
 import { UserPassInput } from '../../shared/interfaces';
 import { AuthService } from '../auth.service';
 
@@ -22,6 +22,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class SetPasswordComponent implements OnInit, OnDestroy {
   form!: FormGroup;
+  isLoading = false;
   matcher = new MyErrorStateMatcher();
   paramSub!: Subscription;
 
@@ -61,22 +62,27 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
       return;
     }
 
+    this.isLoading = true;
+
     const passInput: UserPassInput = {
       senha: this.form.value.password,
       confirmar_senha: this.form.value.confirmPassword,
       codigo_verificacao: this.form.value.verificationCode,
     };
 
-    this.authService.createUserPassword(passInput).subscribe((res) => {
-      if (res) {
-        this.form.reset();
-        Object.keys(this.form.controls).forEach((key) => {
-          this.form.get(key)?.setErrors(null);
-          this.form.get(key)?.markAsPristine();
-          this.form.get(key)?.markAsUntouched();
-        });
-      }
-    });
+    this.authService
+      .createUserPassword(passInput)
+      .pipe(finalize(() => (this.isLoading = false)))
+      .subscribe((res) => {
+        if (res) {
+          this.form.reset();
+          Object.keys(this.form.controls).forEach((key) => {
+            this.form.get(key)?.setErrors(null);
+            this.form.get(key)?.markAsPristine();
+            this.form.get(key)?.markAsUntouched();
+          });
+        }
+      });
   }
 
   public goToLoginPage() {
