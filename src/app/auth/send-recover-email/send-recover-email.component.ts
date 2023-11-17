@@ -35,7 +35,7 @@ export class SendRecoverEmailComponent {
       .sendResetPasswordEmail(this.form.value.email)
       .pipe(finalize(() => (this.isLoading = false)))
       .subscribe({
-        next: () => this.router.navigate(['/auth/login']),
+        next: () => this.goToLoginPage(),
         error: () => this.form.reset(),
       });
   }

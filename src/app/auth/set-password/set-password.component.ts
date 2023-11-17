@@ -73,15 +73,16 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
     this.authService
       .createUserPassword(passInput)
       .pipe(finalize(() => (this.isLoading = false)))
-      .subscribe((res) => {
-        if (res) {
+      .subscribe({
+        next: () => this.goToLoginPage(),
+        error: () => {
           this.form.reset();
           Object.keys(this.form.controls).forEach((key) => {
             this.form.get(key)?.setErrors(null);
             this.form.get(key)?.markAsPristine();
             this.form.get(key)?.markAsUntouched();
           });
-        }
+        },
       });
   }
 
