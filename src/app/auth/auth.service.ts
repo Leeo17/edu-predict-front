@@ -79,6 +79,20 @@ export class AuthService {
     );
   }
 
+  sendResetPasswordEmail(email: string) {
+    return this.apiService.sendResetPasswordEmail(email).pipe(
+      tap((res) => {
+        if (res) {
+          this.messageService.showNotification('Email para recuperação de senha enviado.');
+        }
+      }),
+      catchError((err) => {
+        this.messageService.showNotification(err.error.detail);
+        throw err;
+      })
+    );
+  }
+
   logout() {
     window.localStorage.removeItem('token');
     window.localStorage.removeItem('user');

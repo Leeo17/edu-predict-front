@@ -21,4 +21,8 @@ export class ApiService {
   createUserPassword(input: UserPassInput) {
     return this.http.post<any>(`${environment.api}/user/password`, input);
   }
+
+  sendResetPasswordEmail(email: string) {
+    return this.http.post<any>(`${environment.api}/user/password/email`, { email });
+  }
 }

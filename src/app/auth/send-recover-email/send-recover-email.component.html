@@ -2,12 +2,18 @@
   <mat-card class="c-card">
     <mat-card-title class="u-text-align--center"> Digite o email institucional cadastrado </mat-card-title>
     <mat-card-content>
-      <mat-form-field appearance="fill">
-        <mat-label>Email</mat-label>
-        <input matInput type="email" />
-      </mat-form-field>
-      <button mat-flat-button color="primary" (click)="goToSetPassword()">Enviar</button>
-      <button mat-button color="primary" (click)="goToLoginPage()">Voltar ao login</button>
+      <form class="u-display--flex u-flex-direction--column" [formGroup]="form">
+        <mat-form-field appearance="fill">
+          <mat-label>Email instituicional</mat-label>
+          <input matInput type="email" id="email" formControlName="email" required />
+          <mat-error *ngIf="form.hasError('required', 'email')"> O campo email é obrigatório </mat-error>
+          <mat-error *ngIf="form.hasError('email', 'email')"> O email digitado é inválido </mat-error>
+        </mat-form-field>
+        <button mat-flat-button type="submit" color="primary" [disabled]="!form.valid" (click)="sendEmail()">
+          Enviar
+        </button>
+        <button mat-button color="primary" (click)="goToLoginPage()">Voltar ao login</button>
+      </form>
     </mat-card-content>
   </mat-card>
 </div>
