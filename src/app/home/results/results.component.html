@@ -14,6 +14,10 @@
       <div class="chart-container">
         <canvas id="chart">{{ chart }}</canvas>
       </div>
+      <button class="u-margin-top--xxl" mat-flat-button color="primary" id="download" (click)="downloadChart()">
+        <mat-icon fontIcon="download"> </mat-icon>
+        Baixar imagem
+      </button>
     </mat-card-content>
   </mat-card>
 </div>

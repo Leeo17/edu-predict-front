@@ -9,7 +9,8 @@ import { Chart } from 'chart.js/auto';
 })
 export class ResultsComponent implements OnInit {
   form!: FormGroup;
-  public chart: any;
+  public chart: Chart<'doughnut', number[], string> | null = null;
+  public chartImage: string | undefined;
   public indiceEvasao: number = 75;
   public analises: any[] = [];
 
@@ -23,7 +24,7 @@ export class ResultsComponent implements OnInit {
   }
 
   createChart() {
-    this.chart = new Chart('chart', {
+    const mychart = new Chart('chart', {
       type: 'doughnut',
       data: {
         // values on X-Axis
@@ -36,8 +37,26 @@ export class ResultsComponent implements OnInit {
         ],
       },
       options: {
-        aspectRatio: 2.5,
+        aspectRatio: 4,
+        animation: {
+          onComplete: () => {
+            this.chartImage = mychart.toBase64Image('image/png', 1);
+          },
+        },
       },
     });
+  }
+
+  downloadChart() {
+    if (!this.chartImage) {
+      return;
+    }
+
+    const link = document.createElement('a');
+    link.href = this.chartImage;
+    link.download = 'chart.png';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   }
 }
