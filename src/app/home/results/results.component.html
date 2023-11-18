@@ -1,1 +1,19 @@
-<p>results works!</p>
+<div class="c-container">
+  <mat-card class="c-card">
+    <mat-card-content>
+      <form class="u-display--flex u-flex-direction--column" [formGroup]="form">
+        <mat-form-field>
+          <mat-label>Análise</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let analise of analises" [value]="analise.value">{{
+              analise.viewValue
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+      <div class="chart-container">
+        <canvas id="chart">{{ chart }}</canvas>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
