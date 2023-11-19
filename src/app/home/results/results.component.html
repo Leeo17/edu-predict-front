@@ -1,6 +1,6 @@
 <div class="c-container">
   <mat-card class="c-card">
-    <mat-card-content>
+    <mat-card-content class="u-flex-expand u-flex-justify--around">
       <form class="u-display--flex u-flex-direction--column" [formGroup]="form">
         <mat-form-field>
           <mat-label>Análise</mat-label>
@@ -11,10 +11,10 @@
           </mat-select>
         </mat-form-field>
       </form>
-      <div class="chart-container">
+      <div>
         <canvas id="chart">{{ chart }}</canvas>
       </div>
-      <button class="u-margin-top--xxl" mat-flat-button color="primary" id="download" (click)="downloadChart()">
+      <button mat-flat-button color="primary" id="download" (click)="downloadChart()">
         <mat-icon fontIcon="download"> </mat-icon>
         Baixar imagem
       </button>
