@@ -2,14 +2,15 @@
   <mat-card class="c-card">
     <mat-card-title class="u-text-align--center">Nova Análise</mat-card-title>
     <mat-card-content>
+      <mat-card-subtitle class="u-text-align--center">Dados Acadêmicos</mat-card-subtitle>
       <form class="u-display--flex u-flex-direction--column" [formGroup]="dadosAcademicosForm">
         <mat-form-field appearance="fill">
           <mat-label>Data de ingresso</mat-label>
-          <input matInput type="date" id="dataIngresso" formControlName="dataIngresso" required />
+          <input matInput type="date" id="dataIngresso" formControlName="dataIngresso" />
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Data de conclusão</mat-label>
-          <input matInput type="date" id="dataConclusao" formControlName="dataConclusao" required />
+          <input matInput type="date" id="dataConclusao" formControlName="dataConclusao" />
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Curso</mat-label>
@@ -17,6 +18,26 @@
           <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
             <mat-option *ngFor="let curso of cursos | async" [value]="curso">{{ curso.nome }}</mat-option>
           </mat-autocomplete>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Contagem de disciplinas do curso</mat-label>
+          <input matInput type="number" formControlName="cursoContagemDisciplinas" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Contagem de horas do curso</mat-label>
+          <input matInput type="number" formControlName="cursoContagemHoras" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Contagem de disciplinas cursadas</mat-label>
+          <input matInput type="number" formControlName="contagemDisciplinas" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Contagem de horas cursadas</mat-label>
+          <input matInput type="number" formControlName="contagemHoras" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Contagem de reprovações</mat-label>
+          <input matInput type="number" formControlName="contagemReprovacoes" />
         </mat-form-field>
         <app-submit-button
           class="u-display--flex"

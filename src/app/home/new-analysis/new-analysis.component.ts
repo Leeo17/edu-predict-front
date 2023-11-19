@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable, startWith, switchMap } from 'rxjs';
 import { Course } from '../../shared/interfaces';
 import { ApiService } from '../../shared/services/api.service';
@@ -22,9 +22,14 @@ export class NewAnalysisComponent implements OnInit {
 
   initForm() {
     this.dadosAcademicosForm = this.formBuilder.group({
-      dataIngresso: [null, [Validators.required]],
-      dataConclusao: [null, [Validators.required]],
-      curso: [null, [Validators.required]],
+      dataIngresso: [null],
+      dataConclusao: [null],
+      curso: [null],
+      cursoContagemDisciplinas: [null],
+      cursoContagemHoras: [null],
+      contagemDisciplinas: [null],
+      contagemHoras: [null],
+      contagemReprovacoes: [null],
     });
 
     this.cursos = this.dadosAcademicosForm.get('curso')?.valueChanges.pipe(
