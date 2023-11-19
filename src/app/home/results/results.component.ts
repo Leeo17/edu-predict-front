@@ -37,7 +37,7 @@ export class ResultsComponent implements OnInit {
         ],
       },
       options: {
-        aspectRatio: 4,
+        aspectRatio: 3.5,
         animation: {
           onComplete: () => {
             this.chartImage = mychart.toBase64Image('image/png', 1);
