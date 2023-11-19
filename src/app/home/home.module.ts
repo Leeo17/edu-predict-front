@@ -5,8 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
-import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -35,8 +34,6 @@ import { ResultsComponent } from './results/results.component';
     ReactiveFormsModule,
     SharedModule,
     MatSelectModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
     MatAutocompleteModule,
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }],

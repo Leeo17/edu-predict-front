@@ -5,25 +5,11 @@
       <form class="u-display--flex u-flex-direction--column" [formGroup]="dadosAcademicosForm">
         <mat-form-field appearance="fill">
           <mat-label>Data de ingresso</mat-label>
-          <input
-            matInput
-            [matDatepicker]="pickerIngresso"
-            id="dataIngresso"
-            formControlName="dataIngresso"
-            required />
-          <mat-datepicker-toggle matIconSuffix [for]="pickerIngresso"></mat-datepicker-toggle>
-          <mat-datepicker #pickerIngresso></mat-datepicker>
+          <input matInput type="date" id="dataIngresso" formControlName="dataIngresso" required />
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Data de conclusão</mat-label>
-          <input
-            matInput
-            [matDatepicker]="pickerConclusao"
-            id="dataConclusao"
-            formControlName="dataConclusao"
-            required />
-          <mat-datepicker-toggle matIconSuffix [for]="pickerConclusao"></mat-datepicker-toggle>
-          <mat-datepicker #pickerConclusao></mat-datepicker>
+          <input matInput type="date" id="dataConclusao" formControlName="dataConclusao" required />
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Curso</mat-label>
