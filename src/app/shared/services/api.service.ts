@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { LoginResponse, User, UserInput, UserPassInput } from '../interfaces';
+import { Course, LoginResponse, User, UserInput, UserPassInput } from '../interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -24,5 +24,12 @@ export class ApiService {
 
   sendResetPasswordEmail(email: string) {
     return this.http.post<any>(`${environment.api}/user/password/email`, { email });
+  }
+
+  getCourses(filter: string | null) {
+    let payload: HttpParams | undefined;
+    if (filter) payload = new HttpParams().set('course_filter', filter);
+
+    return this.http.get<Course[]>(`${environment.api}/analysis/courses`, { params: payload });
   }
 }

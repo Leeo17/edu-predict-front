@@ -1,1 +1,45 @@
-<p>new-analysis works!</p>
+<div class="c-container">
+  <mat-card class="c-card">
+    <mat-card-title class="u-text-align--center">Nova Análise</mat-card-title>
+    <mat-card-content>
+      <form class="u-display--flex u-flex-direction--column" [formGroup]="dadosAcademicosForm">
+        <mat-form-field appearance="fill">
+          <mat-label>Data de ingresso</mat-label>
+          <input
+            matInput
+            [matDatepicker]="pickerIngresso"
+            id="dataIngresso"
+            formControlName="dataIngresso"
+            required />
+          <mat-datepicker-toggle matIconSuffix [for]="pickerIngresso"></mat-datepicker-toggle>
+          <mat-datepicker #pickerIngresso></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Data de conclusão</mat-label>
+          <input
+            matInput
+            [matDatepicker]="pickerConclusao"
+            id="dataConclusao"
+            formControlName="dataConclusao"
+            required />
+          <mat-datepicker-toggle matIconSuffix [for]="pickerConclusao"></mat-datepicker-toggle>
+          <mat-datepicker #pickerConclusao></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Curso</mat-label>
+          <input matInput type="text" formControlName="curso" placeholder="Escolha um" [matAutocomplete]="auto" />
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngFor="let curso of cursos | async" [value]="curso">{{ curso.nome }}</mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <app-submit-button
+          class="u-display--flex"
+          label="Analisar"
+          [disabled]="!dadosAcademicosForm.valid"
+          [loading]="isLoading"
+          (click)="analisar()">
+        </app-submit-button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { finalize } from 'rxjs';
 import { UserInput } from '../../shared/interfaces';
@@ -9,7 +9,7 @@ import { HomeService } from '../home.service';
   templateUrl: './create-user.component.html',
   styleUrls: ['./create-user.component.scss'],
 })
-export class CreateUserComponent {
+export class CreateUserComponent implements OnInit {
   form!: FormGroup;
   isLoading = false;
   constructor(private formBuilder: FormBuilder, private homeService: HomeService) {}
