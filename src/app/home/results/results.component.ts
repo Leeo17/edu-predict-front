@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Chart } from 'chart.js/auto';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 @Component({
   selector: 'app-results',
@@ -24,6 +25,7 @@ export class ResultsComponent implements OnInit {
   }
 
   createChart() {
+    Chart.register(ChartDataLabels);
     const mychart = new Chart('chart', {
       type: 'doughnut',
       data: {
@@ -33,6 +35,12 @@ export class ResultsComponent implements OnInit {
           {
             data: [100 - this.indiceEvasao, this.indiceEvasao],
             backgroundColor: ['#ff6384', '#4bc0c0'],
+            datalabels: {
+              color: '#FFFFFF',
+              font: {
+                size: 16,
+              },
+            },
           },
         ],
       },
