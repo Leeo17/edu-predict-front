@@ -1,0 +1,15 @@
+.form-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+}
+
+mat-card-content {
+  overflow-y: auto;
+}
+
+mat-form-field {
+  width: 49%;
+}

@@ -1,9 +1,8 @@
 <div class="c-container">
   <mat-card class="c-card">
-    <mat-card-title class="u-text-align--center">Nova Análise</mat-card-title>
     <mat-card-content>
       <mat-card-subtitle class="u-text-align--center">Dados Acadêmicos</mat-card-subtitle>
-      <form class="u-display--flex u-flex-direction--column" [formGroup]="dadosAcademicosForm">
+      <form class="form-group" [formGroup]="dadosAcademicosForm">
         <mat-form-field appearance="fill">
           <mat-label>Data de ingresso</mat-label>
           <input matInput type="date" id="dataIngresso" formControlName="dataIngresso" />
@@ -38,6 +37,77 @@
         <mat-form-field appearance="fill">
           <mat-label>Contagem de reprovações</mat-label>
           <input matInput type="number" formControlName="contagemReprovacoes" />
+        </mat-form-field>
+      </form>
+      <mat-card-subtitle class="u-text-align--center">Dados Socioeconômicos</mat-card-subtitle>
+      <form class="form-group" [formGroup]="dadosAcademicosForm">
+        <mat-form-field appearance="fill">
+          <mat-label>A sua cor ou raça é?</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let option of corRacaOptions" [value]="option">{{ option }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Concorrência usada para ingressar na universidade</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let option of cotaSisuOptions" [value]="option">{{ option }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Com que idade você começou a exercer atividade remunerada?</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let option of atividadeRemuneradaOptions" [value]="option">{{
+              option
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Como fez seus estudos do ensino fundamental e ensino médio?</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let option of estudosOptions" [value]="option">{{ option }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Qual sua capacidade de leitura em Língua Estrangeira?</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let option of linguaEstrangeiraOptions" [value]="option">{{ option }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Qual o principal desafio que você prevê durante o curso? </mat-label>
+          <mat-select>
+            <mat-option *ngFor="let option of fatoresOptions" [value]="option">{{ option }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Durante o curso, você terá que trabalhar?</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let option of trabalhoOptions" [value]="option">{{ option }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Durante o curso, você terá que trabalhar?</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let option of trabalhoOptions" [value]="option">{{ option }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Em que turno você fez (ou faz) o curso de ensino médio?</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let option of turnoEnsinoMedioOptions" [value]="option">{{ option }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>No ensino médio, você fez (ou faz)</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let option of tipoEnsinoMedioOptions" [value]="option">{{ option }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Pertence a uma comunidade quilombola?</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let option of simNaoOptions" [value]="option">{{ option }}</mat-option>
+          </mat-select>
         </mat-form-field>
         <app-submit-button
           class="u-display--flex"
