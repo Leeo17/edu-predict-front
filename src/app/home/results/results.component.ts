@@ -55,7 +55,7 @@ export class ResultsComponent implements OnInit {
     });
   }
 
-  downloadChart() {
+  exportChart() {
     if (!this.chartImage) {
       return;
     }
