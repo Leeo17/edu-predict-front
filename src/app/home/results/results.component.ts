@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Chart } from 'chart.js/auto';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { Analysis } from '../../shared/interfaces';
+import { ApiService } from '../../shared/services/api.service';
+import { MessageService } from '../../shared/services/message.service';
 
 @Component({
   selector: 'app-results',
@@ -13,15 +16,31 @@ export class ResultsComponent implements OnInit {
   public chart: Chart<'doughnut', number[], string> | null = null;
   public chartImage: string | undefined;
   public indiceEvasao: number = 75;
-  public analises: any[] = [];
+  public analyses: Analysis[] = [];
+  public selectedAnalysis: string | null = null;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private apiService: ApiService,
+    private messageService: MessageService
+  ) {}
 
   ngOnInit() {
+    this.getAnalyses();
     this.form = this.formBuilder.group({
       analise: ['', null],
     });
     this.createChart();
+  }
+
+  getAnalyses() {
+    this.apiService.getAllUserAnalyses().subscribe({
+      next: (res) => {
+        this.analyses = res;
+        this.selectedAnalysis = this.analyses[0].id;
+      },
+      error: (err) => this.messageService.showNotification(err.error.detail),
+    });
   }
 
   createChart() {

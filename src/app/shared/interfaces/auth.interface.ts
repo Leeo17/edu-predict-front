@@ -23,3 +23,10 @@ export interface LoginResponse {
   access_token: string;
   user: User;
 }
+
+export interface Analysis {
+  id: string;
+  id_usuario: string;
+  indice_potencial_evasao: number;
+  data: Date;
+}
