@@ -18,9 +18,8 @@ export class ResultsComponent implements OnInit {
   form!: FormGroup;
   public chart: Chart<'doughnut', number[], string> | null = null;
   public chartImage: string | undefined;
-  public indiceEvasao: number = 75;
   public analyses: Analysis[] = [];
-  public selectedAnalysis: string | null = null;
+  public selectedAnalysis: Analysis | null = null;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -34,15 +33,28 @@ export class ResultsComponent implements OnInit {
     this.form = this.formBuilder.group({
       analise: ['', null],
     });
+
+    this.form.controls['analise'].valueChanges.subscribe((analysisId) => {
+      this.selectedAnalysis = this.analyses.find((analysis) => analysis.id === analysisId) || null;
+      this.chart?.destroy();
+      this.createChart();
+    });
   }
 
   getAnalyses() {
     this.apiService.getAllUserAnalyses().subscribe({
       next: (res) => {
-        if (!res || res.length === 0) return;
+        if (!res || res.length === 0) {
+          this.analyses = [];
+          this.selectedAnalysis = null;
+          this.form.reset();
+          this.form.disable();
+          return;
+        }
+
         this.analyses = res;
-        this.selectedAnalysis = this.analyses[0].id;
-        this.createChart();
+        this.selectedAnalysis = this.analyses[0];
+        this.form.controls['analise'].setValue(this.selectedAnalysis.id);
       },
       error: (err) => this.messageService.showNotification(err.error.detail),
     });
@@ -59,7 +71,10 @@ export class ResultsComponent implements OnInit {
         labels: ['Índice de Potencial Evasão', 'Índice de Potencial Retenção'],
         datasets: [
           {
-            data: [100 - this.indiceEvasao, this.indiceEvasao],
+            data: [
+              1 - this.selectedAnalysis.indice_potencial_evasao,
+              this.selectedAnalysis.indice_potencial_evasao,
+            ],
             backgroundColor: ['#ff6384', '#4bc0c0'],
             datalabels: {
               color: '#FFFFFF',
@@ -71,7 +86,7 @@ export class ResultsComponent implements OnInit {
         ],
       },
       options: {
-        aspectRatio: 3.5,
+        aspectRatio: 3,
         animation: {
           onComplete: () => {
             this.chartImage = mychart.toBase64Image('image/png', 1);
@@ -79,6 +94,7 @@ export class ResultsComponent implements OnInit {
         },
       },
     });
+    this.chart = mychart;
   }
 
   exportChart() {
@@ -100,7 +116,7 @@ export class ResultsComponent implements OnInit {
         width: '400px',
       })
       .afterClosed()
-      .pipe(switchMap((res) => (res ? this.apiService.deleteAnalysis(this.selectedAnalysis!) : [])))
+      .pipe(switchMap((res) => (res ? this.apiService.deleteAnalysis(this.selectedAnalysis!.id) : [])))
       .subscribe({
         next: () => {
           this.messageService.showNotification('Análise excluída com sucesso.');

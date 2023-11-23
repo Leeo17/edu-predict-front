@@ -4,10 +4,7 @@
     <mat-card-content class="u-flex-expand u-flex-justify--around">
       <form class="u-display--flex u-flex-direction--column" [formGroup]="form">
         <mat-form-field>
-          <mat-select
-            [(value)]="selectedAnalysis"
-            [disabled]="analyses.length === 0"
-            placeholder="Nenhuma análise encontrada">
+          <mat-select formControlName="analise" placeholder="Nenhuma análise encontrada">
             <mat-option *ngFor="let analysis of analyses; let i = index" [value]="analysis.id"
               >{{ analyses.length - i }}. {{ analysis.data | date : 'dd/MM/yyyy HH:mm' }}</mat-option
             >
@@ -16,20 +13,18 @@
       </form>
       <img *ngIf="analyses.length === 0" src="assets/no_data.svg" alt="Blank" />
 
-      <div *ngIf="analyses.length > 0">
-        <div>
-          <canvas id="chart">{{ chart }}</canvas>
-        </div>
-        <div class="u-display--flex u-flex-direction--row u-flex-justify--around">
-          <button mat-flat-button color="primary" id="download" (click)="exportChart()">
-            <mat-icon fontIcon="download"></mat-icon>
-            Exportar
-          </button>
-          <button mat-flat-button color="warn" id="delete" (click)="deleteAnalysis()">
-            <mat-icon fontIcon="delete"></mat-icon>
-            Apagar
-          </button>
-        </div>
+      <div [hidden]="analyses.length === 0">
+        <canvas id="chart">{{ chart }}</canvas>
+      </div>
+      <div class="u-display--flex u-flex-direction--row u-flex-justify--around" *ngIf="analyses.length > 0">
+        <button mat-flat-button color="primary" id="download" (click)="exportChart()">
+          <mat-icon fontIcon="download"></mat-icon>
+          Exportar
+        </button>
+        <button mat-flat-button color="warn" id="delete" (click)="deleteAnalysis()">
+          <mat-icon fontIcon="delete"></mat-icon>
+          Apagar
+        </button>
       </div>
     </mat-card-content>
   </mat-card>
