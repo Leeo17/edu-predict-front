@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Chart } from 'chart.js/auto';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/confirm-dialog.component';
 import { Analysis } from '../../shared/interfaces';
 import { ApiService } from '../../shared/services/api.service';
 import { MessageService } from '../../shared/services/message.service';
@@ -22,7 +24,8 @@ export class ResultsComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private apiService: ApiService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -85,5 +88,11 @@ export class ResultsComponent implements OnInit {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  }
+
+  deleteAnalysis() {
+    this.dialog.open(ConfirmDialogComponent, {
+      width: '400px',
+    });
   }
 }
