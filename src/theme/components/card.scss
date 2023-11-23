@@ -6,26 +6,21 @@
 
   mat-card-title {
     font-size: 1.5vw;
-    margin-bottom: var(--space-regular);
-    padding: 1rem;
+    margin-top: 2vh;
   }
 
   mat-card-subtitle {
     font-size: 1.2vw;
-    margin-bottom: var(--space-regular);
     line-height: 1.5vw;
-    padding: 1rem;
+    margin: 2vh;
   }
 
   mat-card-content {
     display: flex !important;
     flex-direction: column;
-    margin-top: var(--space-regular);
-    margin-bottom: var(--space-regular);
 
     img {
-      margin: 2rem;
-      max-width: 50vh;
+      margin: 2vh;
       height: auto;
       align-self: center;
     }
