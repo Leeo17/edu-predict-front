@@ -1,10 +1,19 @@
 <div class="c-container">
   <mat-card class="c-card">
     <mat-card-title class="u-text-align--center"> Esqueceu a senha? </mat-card-title>
-    <mat-card-subtitle class="u-text-align--center"> Digite o email institucional cadastrado </mat-card-subtitle>
-    <mat-card-content class="u-flex-expand u-flex-justify--around">
-      <img src="assets/forgot_password.svg" alt="Recover" />
-
+    <mat-card-subtitle class="u-text-align--center">
+      Não tem problema, preencha seu email institucional ao lado e te enviaremos um link para que você possa
+      redefinir sua senha.
+    </mat-card-subtitle>
+    <mat-card-content>
+      <img src="assets/forgot_password.svg" alt="Login" />
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="c-card">
+    <mat-card-title class="u-text-align--center"> </mat-card-title>
+    <mat-card-subtitle class="u-text-align--center"></mat-card-subtitle>
+    <mat-card-content>
+      <mat-card-title class="u-text-align--center"> Enviar email para redefinição de senha </mat-card-title>
       <form class="u-display--flex u-flex-direction--column" [formGroup]="form">
         <mat-form-field appearance="fill">
           <mat-label>Email instituicional</mat-label>
