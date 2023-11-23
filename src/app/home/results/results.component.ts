@@ -34,20 +34,23 @@ export class ResultsComponent implements OnInit {
     this.form = this.formBuilder.group({
       analise: ['', null],
     });
-    this.createChart();
   }
 
   getAnalyses() {
     this.apiService.getAllUserAnalyses().subscribe({
       next: (res) => {
+        if (!res || res.length === 0) return;
         this.analyses = res;
         this.selectedAnalysis = this.analyses[0].id;
+        this.createChart();
       },
       error: (err) => this.messageService.showNotification(err.error.detail),
     });
   }
 
   createChart() {
+    if (!this.selectedAnalysis) return;
+
     Chart.register(ChartDataLabels);
     const mychart = new Chart('chart', {
       type: 'doughnut',

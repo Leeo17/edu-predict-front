@@ -1,28 +1,35 @@
 <div class="c-container">
   <mat-card class="c-card">
+    <mat-card-title class="u-text-align--center"> Resultados das Análises </mat-card-title>
     <mat-card-content class="u-flex-expand u-flex-justify--around">
       <form class="u-display--flex u-flex-direction--column" [formGroup]="form">
         <mat-form-field>
-          <mat-label>Análise</mat-label>
-          <mat-select [(value)]="selectedAnalysis">
+          <mat-select
+            [(value)]="selectedAnalysis"
+            [disabled]="analyses.length === 0"
+            placeholder="Nenhuma análise encontrada">
             <mat-option *ngFor="let analysis of analyses; let i = index" [value]="analysis.id"
               >{{ analyses.length - i }}. {{ analysis.data | date : 'dd/MM/yyyy HH:mm' }}</mat-option
             >
           </mat-select>
         </mat-form-field>
       </form>
-      <div>
-        <canvas id="chart">{{ chart }}</canvas>
-      </div>
-      <div class="u-display--flex u-flex-direction--row u-flex-justify--around">
-        <button mat-flat-button color="primary" id="download" (click)="exportChart()">
-          <mat-icon fontIcon="download"></mat-icon>
-          Exportar
-        </button>
-        <button mat-flat-button color="warn" id="delete" (click)="deleteAnalysis()">
-          <mat-icon fontIcon="delete"></mat-icon>
-          Apagar
-        </button>
+      <img *ngIf="analyses.length === 0" src="assets/blank.svg" alt="Blank" />
+
+      <div *ngIf="analyses.length > 0">
+        <div>
+          <canvas id="chart">{{ chart }}</canvas>
+        </div>
+        <div class="u-display--flex u-flex-direction--row u-flex-justify--around">
+          <button mat-flat-button color="primary" id="download" (click)="exportChart()">
+            <mat-icon fontIcon="download"></mat-icon>
+            Exportar
+          </button>
+          <button mat-flat-button color="warn" id="delete" (click)="deleteAnalysis()">
+            <mat-icon fontIcon="delete"></mat-icon>
+            Apagar
+          </button>
+        </div>
       </div>
     </mat-card-content>
   </mat-card>
