@@ -36,4 +36,8 @@ export class ApiService {
 
     return this.http.get<Course[]>(`${environment.api}/analysis/courses`, { params: payload });
   }
+
+  deleteAnalysis(id: string) {
+    return this.http.delete(`${environment.api}/analysis/${id}`);
+  }
 }

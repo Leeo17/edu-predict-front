@@ -25,4 +25,20 @@ export class HomeService {
       })
     );
   }
+
+  // deleteAnalysis(id: string) {
+  //   return this.
+  //     tap((res) => {
+  //       if (res) {
+  //         this.messageService.showNotification(
+  //           'Usuário criado com sucesso. É necessário verificar o e-mail para ativar a conta e definir a senha.'
+  //         );
+  //       }
+  //     }),
+  //     catchError((err) => {
+  //       this.messageService.showNotification(err.error.detail);
+  //       throw err;
+  //     })
+  //   );
+  // }
 }

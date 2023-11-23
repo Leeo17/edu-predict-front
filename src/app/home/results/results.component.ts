@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Chart } from 'chart.js/auto';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { switchMap } from 'rxjs';
 import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/confirm-dialog.component';
 import { Analysis } from '../../shared/interfaces';
 import { ApiService } from '../../shared/services/api.service';
@@ -91,8 +92,18 @@ export class ResultsComponent implements OnInit {
   }
 
   deleteAnalysis() {
-    this.dialog.open(ConfirmDialogComponent, {
-      width: '400px',
-    });
+    this.dialog
+      .open(ConfirmDialogComponent, {
+        width: '400px',
+      })
+      .afterClosed()
+      .pipe(switchMap((res) => (res ? this.apiService.deleteAnalysis(this.selectedAnalysis!) : [])))
+      .subscribe({
+        next: () => {
+          this.messageService.showNotification('Análise excluída com sucesso.');
+          this.getAnalyses();
+        },
+        error: (err) => this.messageService.showNotification(err.error.detail),
+      });
   }
 }
