@@ -7,13 +7,35 @@ import {
   ATIVIDADE_REMUNERADA_OPTIONS,
   COR_RACA_OPTIONS,
   COTA_SISU_OPTIONS,
+  CURSINHO_OPTIONS,
+  ESCOLHA_CURSO_OPTIONS,
+  ESTADO_CIVIL_OPTIONS,
+  ESTADO_NASCIMENTO_OPTIONS,
   ESTUDOS_OPTIONS,
   FATORES_OPTIONS,
+  IDADE_ATIVIDADE_REMUNERADA_OPTIONS,
+  INDIGENA_OPTIONS,
+  INFLUENCIA_ESCOLHA_CURSO_OPTIONS,
+  INICIO_CURSO_SUPERIOR_OPTIONS,
   LINGUA_ESTRANGEIRA_OPTIONS,
+  LOCAL_RESIDENCIA_OPTIONS,
+  MOTIVO_CURSO_OPTIONS,
+  NECESSIDADE_ESPECIAL_OPTIONS,
+  NIVEL_INSTRUCAO_OPTIONS,
+  NOVO_PROCESSO_SELETIVO_OPTIONS,
+  OCUPACAO_MAE_OPTIONS,
+  OCUPACAO_PAI_OPTIONS,
+  PARTICIPACAO_FAMILIAR_OPTIONS,
+  RECURSOS_ESCOLHA_CURSO_OPTIONS,
+  RENDA_FAMILIAR_OPTIONS,
+  SEXO_OPTIONS,
   SIM_NAO_OPTIONS,
+  SITUACAO_MORADIA_OPTIONS,
   TIPO_ENSINO_MEDIO_OPTIONS,
+  TIPO_NECESSIDADE_ESPECIAL_OPTIONS,
   TRABALHO_OPTIONS,
   TURNO_ENSINO_MEDIO_OPTIONS,
+  VESTIBULAR_OUTROS_ANOS_OPTIONS,
 } from '../consts';
 
 @Component({
@@ -25,9 +47,11 @@ export class NewAnalysisComponent implements OnInit {
   dadosAcademicosForm!: FormGroup;
   isLoading = false;
   cursos: Observable<Course[]> | undefined;
+  rendaFamiliarOptions = RENDA_FAMILIAR_OPTIONS;
   corRacaOptions = COR_RACA_OPTIONS;
   cotaSisuOptions = COTA_SISU_OPTIONS;
   atividadeRemuneradaOptions = ATIVIDADE_REMUNERADA_OPTIONS;
+  idadeAtividadeRemuneradaOptions = IDADE_ATIVIDADE_REMUNERADA_OPTIONS;
   estudosOptions = ESTUDOS_OPTIONS;
   linguaEstrangeiraOptions = LINGUA_ESTRANGEIRA_OPTIONS;
   fatoresOptions = FATORES_OPTIONS;
@@ -35,6 +59,26 @@ export class NewAnalysisComponent implements OnInit {
   turnoEnsinoMedioOptions = TURNO_ENSINO_MEDIO_OPTIONS;
   tipoEnsinoMedioOptions = TIPO_ENSINO_MEDIO_OPTIONS;
   simNaoOptions = SIM_NAO_OPTIONS;
+  cursinhoOptions = CURSINHO_OPTIONS;
+  ocupacaoMaeOptions = OCUPACAO_MAE_OPTIONS;
+  ocupacaoPaiOptions = OCUPACAO_PAI_OPTIONS;
+  situacaoMoradiaOptions = SITUACAO_MORADIA_OPTIONS;
+  estadoNascimentoOptions = ESTADO_NASCIMENTO_OPTIONS;
+  localResidenciaOptions = LOCAL_RESIDENCIA_OPTIONS;
+  motivoCursoOptions = MOTIVO_CURSO_OPTIONS;
+  nivelInstrucaoOptions = NIVEL_INSTRUCAO_OPTIONS;
+  estadoCivilOptions = ESTADO_CIVIL_OPTIONS;
+  sexoOptions = SEXO_OPTIONS;
+  participacaoFamiliar = PARTICIPACAO_FAMILIAR_OPTIONS;
+  escolhaCursoOptions = ESCOLHA_CURSO_OPTIONS;
+  recursosEscolhaCursoOptions = RECURSOS_ESCOLHA_CURSO_OPTIONS;
+  influenciaEscolhaCursoOptions = INFLUENCIA_ESCOLHA_CURSO_OPTIONS;
+  novoProcessoSeletivo = NOVO_PROCESSO_SELETIVO_OPTIONS;
+  indigenaOptions = INDIGENA_OPTIONS;
+  necessidadeEspecialOptions = NECESSIDADE_ESPECIAL_OPTIONS;
+  tipoNecessidadeEspecialOptions = TIPO_NECESSIDADE_ESPECIAL_OPTIONS;
+  vestibularOutrosAnosOptions = VESTIBULAR_OUTROS_ANOS_OPTIONS;
+  inicioCursoSuperiorOptions = INICIO_CURSO_SUPERIOR_OPTIONS;
 
   constructor(private formBuilder: FormBuilder, private apiService: ApiService) {}
 
