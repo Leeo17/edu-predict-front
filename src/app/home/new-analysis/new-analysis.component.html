@@ -1,6 +1,7 @@
 <div class="c-container">
   <mat-card class="c-card">
     <mat-card-content>
+      <mat-card-title class="u-text-align--center">Nova Análise</mat-card-title>
       <mat-card-subtitle class="u-text-align--center">Dados Acadêmicos</mat-card-subtitle>
       <form class="form-group" [formGroup]="dadosAcademicosForm">
         <mat-form-field appearance="fill">
@@ -54,7 +55,7 @@
           </mat-select>
         </mat-form-field>
         <mat-form-field appearance="fill">
-          <mat-label>Concorrência usada para ingressar na universidade</mat-label>
+          <mat-label>Concorrência do SISU</mat-label>
           <mat-select>
             <mat-option *ngFor="let option of cotaSisuOptions" [value]="option">{{ option }}</mat-option>
           </mat-select>
@@ -229,8 +230,8 @@
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label
-            >Se já iniciou um curso universitário anteriormente, qual sua principal razão para participar de um
-            novo Processo Seletivo?</mat-label
+            >Se já iniciou um curso universitário, qual sua razão para participar de um novo Processo
+            Seletivo?</mat-label
           >
           <mat-select>
             <mat-option *ngFor="let option of novoProcessoSeletivo" [value]="option">{{ option }}</mat-option>
@@ -275,7 +276,7 @@
           </mat-select>
         </mat-form-field>
         <app-submit-button
-          class="u-display--flex"
+          class="u-display--flex u-flex-expand"
           label="Analisar"
           [disabled]="!dadosAcademicosForm.valid"
           [loading]="isLoading"

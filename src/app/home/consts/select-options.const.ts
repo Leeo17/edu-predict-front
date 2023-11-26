@@ -1,3 +1,4 @@
+// A renda total mensal de sua família se situa na faixa:
 export const RENDA_FAMILIAR_OPTIONS = [
   'Até R$ 760,00',
   'De R$ 760,01 até R$ 1090,00',
@@ -30,8 +31,10 @@ export const RENDA_FAMILIAR_OPTIONS = [
   'De R$ 14981,01 até R$ 16866,00',
 ];
 
+// A sua cor ou raça é?
 export const COR_RACA_OPTIONS = ['Branca', 'Parda', 'Amarela', 'Preta', 'Indígena', 'Desconhecido'];
 
+// Concorrência do SISU
 export const COTA_SISU_OPTIONS = [
   'Não informado',
   'Concorrência Geral',
@@ -46,10 +49,13 @@ export const COTA_SISU_OPTIONS = [
   'Defic,pretos,pardos ou indígenas =< 1,5',
 ];
 
+// Você trabalha atualmente em atividade remunerada?
 export const ATIVIDADE_REMUNERADA_OPTIONS = ['Não', 'Sim - meio período', 'Sim - período integral'];
 
+// Com que idade você começou a exercer atividade remunerada?
 export const IDADE_ATIVIDADE_REMUNERADA_OPTIONS = ['Antes dos 16', 'Depois dos 16', 'Nunca trabalhei'];
 
+// Como fez seus estudos do ensino fundamental e ensino médio?
 export const ESTUDOS_OPTIONS = [
   'Integralmente em escola pública',
   'Maior parte em escola pública',
@@ -58,6 +64,7 @@ export const ESTUDOS_OPTIONS = [
   'Em escolas comunitárias/CNEC ou outro',
 ];
 
+// Qual sua capacidade de leitura em Língua Estrangeira?
 export const LINGUA_ESTRANGEIRA_OPTIONS = [
   'Não leio em nenhuma Língua Estrangeira',
   'Leio apenas em Inglês',
@@ -67,6 +74,7 @@ export const LINGUA_ESTRANGEIRA_OPTIONS = [
   'Leio duas ou mais línguas estrangeiras',
 ];
 
+// Qual o principal desafio que você prevê durante o curso?
 export const FATORES_OPTIONS = [
   'Conciliar estudos com vida pessoal e familiar',
   'Persistência e hábitos de estudo',
@@ -76,6 +84,7 @@ export const FATORES_OPTIONS = [
   'Não se enquadra nas alternativas anteriores',
 ];
 
+// Durante o curso, você terá que trabalhar?
 export const TRABALHO_OPTIONS = [
   'Sim, desde o primeiro ano, em tempo parcial',
   'Sim, desde o primeiro ano, em tempo integral',
@@ -84,6 +93,7 @@ export const TRABALHO_OPTIONS = [
   'Não sei',
 ];
 
+// Em que turno você fez (ou faz) o curso de ensino médio?
 export const TURNO_ENSINO_MEDIO_OPTIONS = [
   'Todo diurno',
   'Todo noturno',
@@ -92,6 +102,7 @@ export const TURNO_ENSINO_MEDIO_OPTIONS = [
   'Outro',
 ];
 
+// No ensino médio, você fez (ou faz)
 export const TIPO_ENSINO_MEDIO_OPTIONS = [
   'Ensino médio regular',
   'Ensino médio com terceirão ou cursinho',
@@ -100,8 +111,10 @@ export const TIPO_ENSINO_MEDIO_OPTIONS = [
   'Outro',
 ];
 
+// Pertence a uma comunidade quilombola?
 export const SIM_NAO_OPTIONS = ['Sim', 'Não', 'Sem Resposta'];
 
+// Por quanto tempo você fez cursinho?
 export const CURSINHO_OPTIONS = [
   'Por menos de um semestre',
   'Por um semestre',
@@ -110,6 +123,7 @@ export const CURSINHO_OPTIONS = [
   'Não fiz cursinho',
 ];
 
+// Qual a principal ocupação da sua mãe?
 export const OCUPACAO_MAE_OPTIONS = [
   'Empregada de empresa',
   'Funcionária pública do governo Federal, Estadual ou Municipal',
@@ -125,6 +139,7 @@ export const OCUPACAO_MAE_OPTIONS = [
   'Não trabalha',
 ];
 
+// Qual a principal ocupação do seu pai?
 export const OCUPACAO_PAI_OPTIONS = [
   'Empregado de empresa',
   'Funcionário público do governo Federal, Estadual ou Municipal',
@@ -140,6 +155,7 @@ export const OCUPACAO_PAI_OPTIONS = [
   'Não trabalha',
 ];
 
+// Qual a sua situação quanto à moradia?
 export const SITUACAO_MORADIA_OPTIONS = [
   'Mora em casa de parentes ou amigos',
   'Mora em casa própria, quitada ou financiada',
@@ -152,6 +168,7 @@ export const SITUACAO_MORADIA_OPTIONS = [
   'Outros',
 ];
 
+// Qual o Estado em que nasceu?
 export const ESTADO_NASCIMENTO_OPTIONS = [
   'Paraná',
   'Rio Grande do Sul',
@@ -161,6 +178,7 @@ export const ESTADO_NASCIMENTO_OPTIONS = [
   'Outro',
 ];
 
+// Qual o local de sua residência?
 export const LOCAL_RESIDENCIA_OPTIONS = [
   'Curitiba',
   'Demais municípios da Região Metropolitana',
@@ -175,6 +193,7 @@ export const LOCAL_RESIDENCIA_OPTIONS = [
   'Outro',
 ];
 
+// Qual o motivo que o levou a escolher seu curso?
 export const MOTIVO_CURSO_OPTIONS = [
   'Possibilidade de cursar algo de que gosta',
   'Permite conciliar aula e trabalho',
@@ -186,6 +205,8 @@ export const MOTIVO_CURSO_OPTIONS = [
   'Baixa concorrência pelas vagas',
 ];
 
+// Qual o nível de instrução da sua mãe?
+// Qual o nível de instrução do seu pai?
 export const NIVEL_INSTRUCAO_OPTIONS = [
   'Ensino fundamental incompleto',
   'Ensino fundamental completo',
@@ -197,10 +218,13 @@ export const NIVEL_INSTRUCAO_OPTIONS = [
   'Não sei informar',
 ];
 
+// Qual o seu estado civil?
 export const ESTADO_CIVIL_OPTIONS = ['Solteiro(a)', 'Casado(a)', 'Outro'];
 
+// Qual o seu sexo?
 export const SEXO_OPTIONS = ['Masculino', 'Feminino'];
 
+// Qual é a sua participação na vida econômica de seu grupo familiar?
 export const PARTICIPACAO_FAMILIAR_OPTIONS = [
   'Trabalho unicamente para cobrir minhas despesas',
   'Trabalho e sou o principal responsável pelo sustento da família',
@@ -208,6 +232,7 @@ export const PARTICIPACAO_FAMILIAR_OPTIONS = [
   'Trabalho e contribuo em parte para o sustento da família',
 ];
 
+// Quanto à sua escolha por este curso, você se considera
 export const ESCOLHA_CURSO_OPTIONS = [
   'Indeciso (entre a opção que fez e uma outra)',
   'Muito indeciso (entre a opção que fez e várias outras)',
@@ -217,6 +242,7 @@ export const ESCOLHA_CURSO_OPTIONS = [
   'Sem resposta',
 ];
 
+// Que recursos você utilizou para fazer sua escolha de curso?
 export const RECURSOS_ESCOLHA_CURSO_OPTIONS = [
   'Conversas com profissionais que atuam na área',
   'Conversas com familiares',
@@ -226,6 +252,7 @@ export const RECURSOS_ESCOLHA_CURSO_OPTIONS = [
   'Nenhum em especial',
 ];
 
+// Quem ou o que mais influenciou na escolha do curso?
 export const INFLUENCIA_ESCOLHA_CURSO_OPTIONS = [
   'A família',
   'Colegas e amigos',
@@ -237,6 +264,7 @@ export const INFLUENCIA_ESCOLHA_CURSO_OPTIONS = [
   'Outros',
 ];
 
+// Se já iniciou um curso universitário, qual sua razão para participar de um novo Processo Seletivo?
 export const NOVO_PROCESSO_SELETIVO_OPTIONS = [
   'Por não ter gostado',
   'Por estar mais decidido e preparado',
@@ -246,6 +274,7 @@ export const NOVO_PROCESSO_SELETIVO_OPTIONS = [
   'Não me enquadro nesta situação',
 ];
 
+// Se você é indígena, qual é a sua etnia?
 export const INDIGENA_OPTIONS = [
   'Não sou indígena',
   'Kaigang',
@@ -260,8 +289,10 @@ export const INDIGENA_OPTIONS = [
   'Candidato não se autoidentifica como indígena',
 ];
 
+// Você apresenta alguma necessidade educacional especial?
 export const NECESSIDADE_ESPECIAL_OPTIONS = ['Não', 'Sim', 'Não dispõe da informação', 'Sem Resposta'];
 
+// Tipo de necessidade educacional especial
 export const TIPO_NECESSIDADE_ESPECIAL_OPTIONS = [
   'TDHA',
   'Transtorno do Espectro do Autismo',
@@ -277,6 +308,7 @@ export const TIPO_NECESSIDADE_ESPECIAL_OPTIONS = [
   'Sem resposta',
 ];
 
+// Você já fez o vestibular em outros anos? (desconsidere treineiro)
 export const VESTIBULAR_OUTROS_ANOS_OPTIONS = [
   'Não, este é o primeiro ano em que faço vestibular',
   'Sim, este é o segundo ano que faço vestibular',
@@ -285,6 +317,7 @@ export const VESTIBULAR_OUTROS_ANOS_OPTIONS = [
   'Sim, faço vestibular há mais de quatro anos',
 ];
 
+// Você já iniciou algum curso superior?
 export const INICIO_CURSO_SUPERIOR_OPTIONS = [
   'Não',
   'Sim, estou cursando',
