@@ -16,7 +16,7 @@ import { MessageService } from '../../shared/services/message.service';
 })
 export class ResultsComponent implements OnInit {
   form!: FormGroup;
-  public chart: Chart<'doughnut', number[], string> | null = null;
+  public chart: Chart<'bar', number[], string> | null = null;
   public chartImage: string | undefined;
   public analyses: Analysis[] = [];
   public selectedAnalysis: Analysis | null = null;
@@ -65,17 +65,16 @@ export class ResultsComponent implements OnInit {
 
     Chart.register(ChartDataLabels);
     const mychart = new Chart('chart', {
-      type: 'doughnut',
+      type: 'bar',
       data: {
         // values on X-Axis
-        labels: ['Índice de Potencial Evasão', 'Índice de Potencial Retenção'],
+        labels: ['Índice de Potencial Evasão'],
         datasets: [
           {
-            data: [
-              1 - this.selectedAnalysis.indice_potencial_evasao,
-              this.selectedAnalysis.indice_potencial_evasao,
-            ],
-            backgroundColor: ['#ff6384', '#4bc0c0'],
+            label: 'Índice de Potencial Evasão',
+            data: [this.selectedAnalysis.indice_potencial_evasao],
+            backgroundColor: [this.chartBarColor],
+            maxBarThickness: 200,
             datalabels: {
               color: '#FFFFFF',
               font: {
@@ -90,6 +89,12 @@ export class ResultsComponent implements OnInit {
         animation: {
           onComplete: () => {
             this.chartImage = mychart.toBase64Image('image/png', 1);
+          },
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            max: 1,
           },
         },
       },
@@ -124,5 +129,13 @@ export class ResultsComponent implements OnInit {
         },
         error: (err) => this.messageService.showNotification(err.error.detail),
       });
+  }
+
+  get chartBarColor(): string {
+    if (this.selectedAnalysis!.indice_potencial_evasao > 0.9) return 'rgba(255, 99, 132)';
+    if (this.selectedAnalysis!.indice_potencial_evasao > 0.7) return 'rgba(255, 159, 64)';
+    if (this.selectedAnalysis!.indice_potencial_evasao > 0.5) return 'rgba(255, 205, 86)';
+
+    return 'rgba(75, 192, 192)';
   }
 }
