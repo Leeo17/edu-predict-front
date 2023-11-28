@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable, startWith, switchMap } from 'rxjs';
-import { Course } from '../../shared/interfaces';
+import { Course, NewAnalysys } from '../../shared/interfaces';
 import { ApiService } from '../../shared/services/api.service';
 import {
   ATIVIDADE_REMUNERADA_OPTIONS,
@@ -153,20 +153,24 @@ export class NewAnalysisComponent implements OnInit {
   }
 
   analisar() {
-    var anoConclusaoEnsinoMedio: number = this.dadosSocioeconomicosForm.get('anoConclusaoEnsinoMedio')?.value;
+    const dadosAcademicosValues = this.dadosAcademicosForm.getRawValue();
+    const dadosSocioeconomicos = this.dadosSocioeconomicosForm.getRawValue();
 
-    if (anoConclusaoEnsinoMedio < 1999) {
-      anoConclusaoEnsinoMedio = 1989;
+    if (dadosSocioeconomicos.anoConclusaoEnsinoMedio < 1999) {
+      dadosSocioeconomicos.anoConclusaoEnsinoMedio = 1989;
     }
 
-    if (anoConclusaoEnsinoMedio > 2018) {
-      anoConclusaoEnsinoMedio = 2019;
+    if (dadosSocioeconomicos.anoConclusaoEnsinoMedio > 2018) {
+      dadosSocioeconomicos.anoConclusaoEnsinoMedio = 2019;
     }
 
-    this.dadosSocioeconomicosForm.get('anoConclusaoEnsinoMedio')?.setValue(anoConclusaoEnsinoMedio);
-    console.log(this.dadosSocioeconomicosForm.get('anoConclusaoEnsinoMedio')?.value);
+    dadosAcademicosValues.curso = dadosAcademicosValues.curso?.id;
 
-    console.log(this.dadosAcademicosForm.getRawValue());
-    console.log(this.dadosSocioeconomicosForm.getRawValue());
+    const newAnalysis: NewAnalysys = {
+      ...dadosAcademicosValues,
+      ...dadosSocioeconomicos,
+    };
+
+    console.log(newAnalysis);
   }
 }
