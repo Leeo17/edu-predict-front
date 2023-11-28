@@ -95,8 +95,8 @@ export class NewAnalysisComponent implements OnInit {
       curso: [null],
       cursoContagemDisciplinas: [null],
       cursoContagemHoras: [null],
-      contagemDisciplinas: [null],
-      contagemHoras: [null],
+      contagemDisciplinasCursadas: [null],
+      contagemHorasCursadas: [null],
       contagemReprovacoes: [null],
     });
 
@@ -153,6 +153,19 @@ export class NewAnalysisComponent implements OnInit {
   }
 
   analisar() {
+    var anoConclusaoEnsinoMedio: number = this.dadosSocioeconomicosForm.get('anoConclusaoEnsinoMedio')?.value;
+
+    if (anoConclusaoEnsinoMedio < 1999) {
+      anoConclusaoEnsinoMedio = 1989;
+    }
+
+    if (anoConclusaoEnsinoMedio > 2018) {
+      anoConclusaoEnsinoMedio = 2019;
+    }
+
+    this.dadosSocioeconomicosForm.get('anoConclusaoEnsinoMedio')?.setValue(anoConclusaoEnsinoMedio);
+    console.log(this.dadosSocioeconomicosForm.get('anoConclusaoEnsinoMedio')?.value);
+
     console.log(this.dadosAcademicosForm.getRawValue());
     console.log(this.dadosSocioeconomicosForm.getRawValue());
   }

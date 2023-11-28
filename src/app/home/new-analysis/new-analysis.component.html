@@ -15,7 +15,7 @@
         <mat-form-field appearance="fill">
           <mat-label>Curso</mat-label>
           <input matInput type="text" formControlName="curso" placeholder="Escolha um" [matAutocomplete]="auto" />
-          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" requireSelection>
             <mat-option *ngFor="let curso of cursos | async" [value]="curso">{{ curso.nome }}</mat-option>
           </mat-autocomplete>
         </mat-form-field>
@@ -29,11 +29,11 @@
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Contagem de disciplinas cursadas</mat-label>
-          <input matInput type="number" formControlName="contagemDisciplinas" />
+          <input matInput type="number" formControlName="contagemDisciplinasCursadas" />
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Contagem de horas cursadas</mat-label>
-          <input matInput type="number" formControlName="contagemHoras" />
+          <input matInput type="number" formControlName="contagemHorasCursadas" />
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Contagem de reprovações</mat-label>
