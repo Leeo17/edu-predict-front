@@ -163,11 +163,11 @@ export class NewAnalysisComponent implements OnInit {
     const dadosAcademicosValues = this.dadosAcademicosForm.getRawValue();
     const dadosSocioeconomicos = this.dadosSocioeconomicosForm.getRawValue();
 
-    if (dadosSocioeconomicos.anoConclusaoEnsinoMedio < 1999) {
+    if (dadosSocioeconomicos.anoConclusaoEnsinoMedio && dadosSocioeconomicos.anoConclusaoEnsinoMedio < 1999) {
       dadosSocioeconomicos.anoConclusaoEnsinoMedio = 1989;
     }
 
-    if (dadosSocioeconomicos.anoConclusaoEnsinoMedio > 2018) {
+    if (dadosSocioeconomicos.anoConclusaoEnsinoMedio && dadosSocioeconomicos.anoConclusaoEnsinoMedio > 2018) {
       dadosSocioeconomicos.anoConclusaoEnsinoMedio = 2019;
     }
 
