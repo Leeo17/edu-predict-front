@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { Analysis, Course, LoginResponse, User, UserInput, UserPassInput } from '../interfaces';
+import { Analysis, Course, LoginResponse, NewAnalysis, User, UserInput, UserPassInput } from '../interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -39,5 +39,9 @@ export class ApiService {
 
   deleteAnalysis(id: string) {
     return this.http.delete(`${environment.api}/analysis/${id}`);
+  }
+
+  newAnalysis(input: NewAnalysis) {
+    return this.http.post<NewAnalysis>(`${environment.api}/analysis`, input);
   }
 }

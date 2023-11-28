@@ -3,7 +3,7 @@ export interface Course {
   nome: string;
 }
 
-export interface NewAnalysys {
+export interface NewAnalysis {
   dataIngresso: string;
   dataConclusao: string;
   curso: number;

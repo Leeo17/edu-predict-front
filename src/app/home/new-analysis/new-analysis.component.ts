@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable, startWith, switchMap } from 'rxjs';
-import { Course, NewAnalysys } from '../../shared/interfaces';
+import { Course, NewAnalysis } from '../../shared/interfaces';
 import { ApiService } from '../../shared/services/api.service';
 import {
   ATIVIDADE_REMUNERADA_OPTIONS,
@@ -37,6 +38,7 @@ import {
   TURNO_ENSINO_MEDIO_OPTIONS,
   VESTIBULAR_OUTROS_ANOS_OPTIONS,
 } from '../consts';
+import { HomeService } from '../home.service';
 
 @Component({
   selector: 'app-new-analysis',
@@ -82,7 +84,12 @@ export class NewAnalysisComponent implements OnInit {
   vestibularOutrosAnosOptions = VESTIBULAR_OUTROS_ANOS_OPTIONS;
   inicioCursoSuperiorOptions = INICIO_CURSO_SUPERIOR_OPTIONS;
 
-  constructor(private formBuilder: FormBuilder, private apiService: ApiService) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private apiService: ApiService,
+    private homeService: HomeService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -164,13 +171,55 @@ export class NewAnalysisComponent implements OnInit {
       dadosSocioeconomicos.anoConclusaoEnsinoMedio = 2019;
     }
 
-    dadosAcademicosValues.curso = dadosAcademicosValues.curso?.id;
-
-    const newAnalysis: NewAnalysys = {
-      ...dadosAcademicosValues,
-      ...dadosSocioeconomicos,
+    const newAnalysis: NewAnalysis = {
+      dataIngresso: dadosAcademicosValues.dataIngresso ?? '',
+      dataConclusao: dadosAcademicosValues.dataConclusao ?? '',
+      curso: typeof dadosAcademicosValues.curso === 'string' ? 0 : dadosAcademicosValues.curso?.id ?? 0,
+      cursoContagemDisciplinas: dadosAcademicosValues.cursoContagemDisciplinas ?? 0,
+      cursoContagemHoras: dadosAcademicosValues.cursoContagemHoras ?? 0,
+      contagemDisciplinasCursadas: dadosAcademicosValues.contagemDisciplinasCursadas ?? 0,
+      contagemHorasCursadas: dadosAcademicosValues.contagemHorasCursadas ?? 0,
+      contagemReprovacoes: dadosAcademicosValues.contagemReprovacoes ?? 0,
+      rendaMensal: dadosSocioeconomicos.rendaMensal ?? '',
+      corRaca: dadosSocioeconomicos.corRaca ?? '',
+      cotaSisu: dadosSocioeconomicos.cotaSisu ?? '',
+      atividadeRemunerada: dadosSocioeconomicos.atividadeRemunerada ?? '',
+      idadeAtividadeRemunerada: dadosSocioeconomicos.idadeAtividadeRemunerada ?? '',
+      estudos: dadosSocioeconomicos.estudos ?? '',
+      linguaEstrangeira: dadosSocioeconomicos.linguaEstrangeira ?? '',
+      principalFator: dadosSocioeconomicos.principalFator ?? '',
+      trabalharCurso: dadosSocioeconomicos.trabalharCurso ?? '',
+      anoConclusaoEnsinoMedio: dadosSocioeconomicos.anoConclusaoEnsinoMedio ?? 0,
+      turnoEnsinoMedio: dadosSocioeconomicos.turnoEnsinoMedio ?? '',
+      tipoEnsinoMedio: dadosSocioeconomicos.tipoEnsinoMedio ?? '',
+      comunidadeQuilombola: dadosSocioeconomicos.comunidadeQuilombola ?? '',
+      tempoCursinho: dadosSocioeconomicos.tempoCursinho ?? '',
+      ocupacaoMae: dadosSocioeconomicos.ocupacaoMae ?? '',
+      ocupacaoPai: dadosSocioeconomicos.ocupacaoPai ?? '',
+      situacaoMoradia: dadosSocioeconomicos.situacaoMoradia ?? '',
+      estadoNascimento: dadosSocioeconomicos.estadoNascimento ?? '',
+      localResidencia: dadosSocioeconomicos.localResidencia ?? '',
+      motivoCurso: dadosSocioeconomicos.motivoCurso ?? '',
+      instrucaoMae: dadosSocioeconomicos.instrucaoMae ?? '',
+      instrucaoPai: dadosSocioeconomicos.instrucaoPai ?? '',
+      estadoCivil: dadosSocioeconomicos.estadoCivil ?? '',
+      sexo: dadosSocioeconomicos.sexo ?? '',
+      participacaoEconomica: dadosSocioeconomicos.participacaoEconomica ?? '',
+      contribuintesRendaFamiliar: dadosSocioeconomicos.contribuintesRendaFamiliar ?? 0,
+      sustentadasRendaFamiliar: dadosSocioeconomicos.sustentadasRendaFamiliar ?? 0,
+      escolhaCurso: dadosSocioeconomicos.escolhaCurso ?? '',
+      recursosEscolhaCurso: dadosSocioeconomicos.recursosEscolhaCurso ?? '',
+      influenciasEscolhaCurso: dadosSocioeconomicos.influenciasEscolhaCurso ?? '',
+      razaoNovoProcessoSeletivo: dadosSocioeconomicos.razaoNovoProcessoSeletivo ?? '',
+      etniaIndigena: dadosSocioeconomicos.etniaIndigena ?? '',
+      necessidadeEspecial: dadosSocioeconomicos.necessidadeEspecial ?? '',
+      tipoNecessidadeEspecial: dadosSocioeconomicos.tipoNecessidadeEspecial ?? '',
+      vestibularOutrosAnos: dadosSocioeconomicos.vestibularOutrosAnos ?? '',
+      iniciouCursoSuperior: dadosSocioeconomicos.iniciouCursoSuperior ?? '',
     };
 
-    console.log(newAnalysis);
+    this.homeService.newAnalysis(newAnalysis).subscribe({
+      next: () => this.router.navigate(['/home/results']),
+    });
   }
 }

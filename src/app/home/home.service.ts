@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { catchError, tap } from 'rxjs';
-import { UserInput } from '../shared/interfaces';
+import { NewAnalysis, UserInput } from '../shared/interfaces';
 import { ApiService } from '../shared/services/api.service';
 import { MessageService } from '../shared/services/message.service';
 
@@ -17,6 +17,20 @@ export class HomeService {
           this.messageService.showNotification(
             'Usuário criado com sucesso. É necessário verificar o e-mail para ativar a conta e definir a senha.'
           );
+        }
+      }),
+      catchError((err) => {
+        this.messageService.showNotification(err.error.detail);
+        throw err;
+      })
+    );
+  }
+
+  newAnalysis(input: NewAnalysis) {
+    return this.apiService.newAnalysis(input).pipe(
+      tap((res) => {
+        if (res) {
+          this.messageService.showNotification('Análise realizada com sucesso!');
         }
       }),
       catchError((err) => {
