@@ -45,6 +45,8 @@ import {
 })
 export class NewAnalysisComponent implements OnInit {
   dadosAcademicosForm!: FormGroup;
+  dadosSocioeconomicosForm!: FormGroup;
+
   isLoading = false;
   cursos: Observable<Course[]> | undefined;
   rendaFamiliarOptions = RENDA_FAMILIAR_OPTIONS;
@@ -98,6 +100,45 @@ export class NewAnalysisComponent implements OnInit {
       contagemReprovacoes: [null],
     });
 
+    this.dadosSocioeconomicosForm = this.formBuilder.group({
+      rendaMensal: [null],
+      corRaca: [null],
+      cotaSisu: [null],
+      atividadeRemunerada: [null],
+      idadeAtividadeRemunerada: [null],
+      estudos: [null],
+      linguaEstrangeira: [null],
+      principalFator: [null],
+      trabalharCurso: [null],
+      anoConclusaoEnsinoMedio: [null],
+      turnoEnsinoMedio: [null],
+      tipoEnsinoMedio: [null],
+      comunidadeQuilombola: [null],
+      tempoCursinho: [null],
+      ocupacaoMae: [null],
+      ocupacaoPai: [null],
+      situacaoMoradia: [null],
+      estadoNascimento: [null],
+      localResidencia: [null],
+      motivoCurso: [null],
+      instrucaoMae: [null],
+      instrucaoPai: [null],
+      estadoCivil: [null],
+      sexo: [null],
+      participacaoEconomica: [null],
+      contribuintesRendaFamiliar: [null],
+      sustentadasRendaFamiliar: [null],
+      escolhaCurso: [null],
+      recursosEscolhaCurso: [null],
+      influenciasEscolhaCurso: [null],
+      razaoNovoProcessoSeletivo: [null],
+      etniaIndigena: [null],
+      necessidadeEspecial: [null],
+      tipoNecessidadeEspecial: [null],
+      vestibularOutrosAnos: [null],
+      iniciouCursoSuperior: [null],
+    });
+
     this.cursos = this.dadosAcademicosForm.get('curso')?.valueChanges.pipe(
       startWith(''),
       switchMap((value) => {
@@ -113,5 +154,6 @@ export class NewAnalysisComponent implements OnInit {
 
   analisar() {
     console.log(this.dadosAcademicosForm.getRawValue());
+    console.log(this.dadosSocioeconomicosForm.getRawValue());
   }
 }
