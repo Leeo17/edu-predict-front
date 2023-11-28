@@ -6,7 +6,7 @@ export interface Course {
 export interface NewAnalysys {
   dataIngresso: string;
   dataConclusao: string;
-  curso: string;
+  curso: number;
   cursoContagemDisciplinas: number;
   cursoContagemHoras: number;
   contagemDisciplinasCursadas: number;
